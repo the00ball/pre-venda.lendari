@@ -339,14 +339,23 @@ class ATCF_Campaign {
 	 * @return sting $percent The percent completed (formatted with a % or not)
 	 */
 	public function percent_completed( $formatted = true ) {
+		$now       = current_time( 'timestamp' );
+		$post_date = strtotime( $this->data->post_date, $now );
+		$end_date  = strtotime( $this->end_date(), $now );
+
+		$goal =  floor( ( $end_date - $post_date ) / 86400 );
+		$current = $goal - $this->days_remaining();
+
+		/*
 		$goal    = $this->goal(false);
 		$current = $this->current_amount(false);
 
 		if ( 0 == $goal )
 			return $formatted ? 0 . '%' : 0;
+		*/
 
 		$percent = ( $current / $goal ) * 100;
-		$percent = round( $percent );
+		$percent = floor( $percent );
 
 		if ( $formatted )
 			return $percent . '%';
