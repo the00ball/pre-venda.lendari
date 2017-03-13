@@ -458,6 +458,12 @@ class ATCF_Campaign {
 
 		return false;
 	}
+
+	public function date_goal() {
+		$date = date_create( $this->end_date() );
+		return date_format( $date, 'd/m/Y' );
+	}
+
 }
 
 function atcf_get_campaign( $campaign ) {

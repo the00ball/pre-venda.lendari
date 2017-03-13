@@ -46,14 +46,13 @@ $uid = wpo_makeid();
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 xs-text-center">
 					<ul class="campaign-status text-center">
-
-						<li class="campaign-raised">
+						<!--li class="campaign-raised">
 							<p class="label"><?php _e( 'Current','unity' ) ?></p>
 							<p class="text"><?php echo esc_html( $campaign->current_amount() ); ?></p>
-						</li>
+						</li-->
 						<li class="campaign-goal">
 							<p class="label"><?php _e( 'Target','unity' ) ?></p>
-							<p class="text"><?php echo esc_html( $campaign->goal() ); ?></p>
+							<p class="text"><?php echo esc_html( $campaign->date_goal() ); ?></p>
 						</li>
 						<li class="campaign-backers">
 							<p class="label"><?php _e( 'Backers','unity' ) ?></p>
