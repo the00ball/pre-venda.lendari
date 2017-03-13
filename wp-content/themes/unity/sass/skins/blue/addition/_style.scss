@@ -1,0 +1,21 @@
+//-------- Button --------------
+.item-campaign-wrapper .entry-title{
+	font-family: $font-family-second;
+}
+#main-menu > li{
+	font-family: $font-family-second;
+}
+.widget_mc4wp_widget{
+	input{
+		@include border-radius(3px);
+	}
+	.description{
+		font-size: 13px;
+		line-height: 18px;
+		padding: 10px 0;
+	} 
+}
+
+.copyright{
+	font-family: $font-family-second;
+}

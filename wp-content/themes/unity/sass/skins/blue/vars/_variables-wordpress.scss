@@ -1,0 +1,42 @@
+$theme-color:               		#41A4DD;
+$theme-color-second: 				#5d5d5d;
+
+$image-theme-path                   :'../../../images/';
+$image-theme-skin                   :'../../../images/skins/blue/';
+$woo-font-path                      :'../../../fonts/woocommerce/';
+$theme-font-path                 	: '../../../fonts/';
+// Font
+// -------------------------
+$font-family-second 				: 'Bitter';
+
+// Breadcrumb
+// -------------------------
+$breadcrumb-bg       : rgba($black, 0.01);
+$breadcrumb-bg-image : url("#{$image-theme-path}breadcrumb-bg.png");
+$breadcrumb-border   : 0px;
+
+// Typography
+// --------------------------
+$font-size-lg       : 48px;
+ 
+
+// Box
+// --------------------------
+$box-heading-font-size:             16px;
+
+//Font slide
+$font-slide-primary		: 'Lato';
+$font-slide-second		: 'Raleway';
+
+//Layout
+//---------------------------
+$block-sidebar-heading-hightlight-bg   : $theme-color;
+@import
+    "form",
+    "layout",
+    "menu",
+    "page",
+    "post-vars",
+    "visual-vars",
+    "widget";
+

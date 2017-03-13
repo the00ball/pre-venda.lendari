@@ -1,0 +1,39 @@
+.item-campaign-wrapper .entry-thumbnail{
+	overflow: inherit!important;
+	&:after{
+		content: none!important;
+	}
+}
+ .wpo-testimonial.skin-2 .testimonial-customer-name{
+ 	color: $theme-color;
+ }
+ .widget_mc4wp_widget{
+ 	background-color: $theme-color;
+ }
+ .campaign-item-modal .edd_price_options ul > li label{
+ 	font-size: 15px;
+ }
+ .campaign-item-modal .edd_price_options ul > li.price-custom{
+ 	padding: 3.5px 10px;
+ }
+ .wpo-header .btn-create-campaign .user-campaign{
+ 	line-height: 66px;
+ }
+.wpo-ourservice.quote .ourservice-heading span{
+	color: $white;
+}
+
+.btn-donate{
+	font-size: 12px!important;
+} 
+
+.widget_mc4wp_widget{
+	input{
+		@include border-radius(3px);
+	}
+	.description{
+		line-height: 18px;
+		padding: 10px 0;
+		color: $white;
+	} 
+}

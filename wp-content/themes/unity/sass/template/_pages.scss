@@ -1,0 +1,531 @@
+//Page default
+//---------------------------------
+.default-template .article{
+	background: $white;
+}
+
+// Elements Boostrap Page
+//----------------------------------
+.bs-component,
+.bs-docs-section{
+	.modal{
+		bottom: auto;
+		display: block;
+		left: auto;
+		position: relative;
+		right: auto;
+		top: auto;
+		z-index: 1;
+	}
+	p:empty{
+		margin: 0;
+		padding: 0;
+		@include hide-text();
+	}
+	br{
+		display: none;
+	}
+	.modal-dialog{
+		width: 90%;
+	}
+}
+
+// Contact Page
+//----------------------------------
+div.wpcf7-validation-errors{
+	margin: 0;
+	padding: 15px;
+	color: $theme-color;
+}
+.wpo-contact-info{
+	background: $theme-color;
+	color: $text-color;
+	padding: 40px;
+	&:before{
+		position: absolute;
+		width: 100%;
+		height: 450px;
+		right: 0;
+		top: 100%;
+		content: "";
+		background: $theme-color;
+	}
+	.widget {
+		.widget-text-heading, .widget-title{
+			span{
+				&:after{
+					background: $text-color;
+				}
+			}
+		}
+	}
+}
+
+.wpo-contact-form{
+	background: $theme-color-second;
+	padding: 40px;
+	&:before{
+		position: absolute;
+		width: 100%;
+		height: 450px;
+		right: 0;
+		top: 100%;
+		content: "";
+		background: $theme-color-second;
+	}
+	.widget {
+		.widget-text-heading, .widget-title{ 
+			span{
+				color: $theme-color;
+			}
+		}
+	}
+	input, textarea{
+		border: none!important;
+	}
+	textarea{
+		height: 110px;
+	}
+}
+.vertical-midde-contact-form{
+	overflow: hidden;
+	position: absolute!important;
+	top: 100px;
+	width: 100%;
+	z-index: 99;
+}
+.contact-form-content{
+	background: $contact-bg;
+}
+
+// Page Not Found
+//----------------------------------
+.page_not_found{
+	@include rtl-margin(20px, 0, 80px, 0);
+	padding: 100px 0 50px;
+	.page-preview a,.error-title{
+		margin: $error-title-margin;
+		@include font-size(font-size, $error-title-font-size);
+		text-transform: uppercase;
+		font-weight: 800;
+		line-height: $error-title-line-height;
+	}
+	.page-preview a{
+		font-size: 12px;
+		color: $theme-color;
+		margin: 0 0 15px;
+		display: block;
+		&:hover{
+			color: $text-color;
+		}
+	}
+
+	.error-content{
+		line-height: 40px;
+		margin-bottom: 30px;
+		@include font-size(font-size,$error-content-font-size);
+	}
+	.page-footer{
+		p{
+			margin-bottom: 20px;
+		}
+	}
+}
+
+.woocommerce-page .header-title{
+	display: none;
+}
+
+//Single campaign
+//------------------------------------
+.single-campaign{
+	.thumbnail{
+		overflow: hidden;
+		position: relative;
+	}
+	.single-campaign-content{
+		background: #F4F4F4;
+		padding: 30px;
+		.entry-description{
+			margin-top: 15px;
+		}
+	}
+	.block-title{
+		text-transform: uppercase;
+		font-size: 48px;
+		font-weight: 800;
+		color: $theme-color;
+		line-height: 36px;
+      @media(max-width: $screen-sm-max){
+         font-size: 24px;
+         line-height: 20px;
+         margin-bottom: 30px;
+      }
+	}
+	.campaign-time-left{
+        font-size: 14px;
+        color: $theme-color-second;
+        font-weight: 300; 
+        padding: 15px 0;
+        display: table;
+        width: 100%;
+        .title{
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+    }
+	.funded{
+		font-size: 45px;
+		font-weight: 700;
+		color: $theme-color;
+		text-transform: uppercase;
+		line-height: 50px;
+		text-align: center;
+		sup{
+			top:0;
+			font-weight: 300;
+			font-size: 24px;
+		}
+	}
+
+	.campaign-summary{
+      @media(max-width: $screen-xs-max){
+         display: inline-block;
+      }
+		> div{
+			float: left;
+         &.barometer-main{
+            max-width: 145px;
+         }
+		} 
+		.text-barometer{
+			ul{
+				> li{
+					list-style: none;
+					text-align: left;
+					position: relative;	
+					padding-bottom: 20px;
+					margin-bottom: 13px; 				
+					.label{
+						font-size: 14px;
+						font-weight: 800;
+						text-transform: uppercase; 
+						color: $text-color;
+						padding: 0;
+					}
+					.text{
+						font-size: 24px;
+						font-weight: 800;
+						text-transform: uppercase;
+						line-height: 1;
+						margin: 0;
+						color: $theme-color;
+					}
+					&:before{
+						content: "";
+						bottom: 0;
+						left: 0;
+						border-top: 1px solid $text-color;
+						width: 32px;
+						position: absolute;
+					}
+					&:last-child:before{
+						content: none;
+					}
+				}
+			}
+		}
+	}	
+	.quick-donate{
+		display: table;
+		width: 100%;
+	}
+	.edd_price_options{
+		width: 100%;
+		clear: both;
+		display: table;
+		ul{
+			>li {
+				float: left;
+				display: inline-block;
+				background: $white;
+				text-transform: uppercase; 
+				font-weight: 800;
+				color: $text-color;
+				margin-right: 20px;
+				position: relative;
+				z-index: 9;
+				@include transition(all 0.35s);
+				h3{
+					margin: 0;
+				}
+				label{
+					margin: 0;
+					color: $text-color;
+					padding: 10px;
+				}
+				&.pledge-level{
+					input{
+						@include opacity(0);
+						@include size(0, 0);
+						position: absolute;
+						z-index: 0;
+					}
+					&:hover{
+						cursor: pointer;
+						label{
+							cursor: pointer;
+						}
+					}
+				}
+				&.active{
+					background: $theme-color;
+					label{
+						color: $white;
+					}	
+				}
+				&.price-custom{
+					padding: 8.5px 10px;
+					.title{
+						font-weight: 300;
+						font-size: 12px;
+						text-transform: none;
+					}
+					input{
+						padding: 0;
+						max-width: 100px;
+						border: none;
+						border-bottom: 1px solid $border-color;
+					}
+				}
+			}
+		}
+	}
+	.edd_purchase_submit_wrapper{
+		text-align: center;
+		.edd_go_to_checkout, .edd-add-to-cart{
+			@include border-radius(0);
+			border: none;
+			text-transform: uppercase;
+			font-weight: 800;
+			background: $theme-color;
+			color: $white;
+			font-size: 18px;
+			padding: 10px 15px;
+			@include transition(all 0.35s);
+			&:hover, &:focus{
+				color: $text-color;
+				background: $white;
+			}
+		}
+		.edd-cart-ajax-alert{
+			display: block;
+			width: 100%;
+			text-color: center;
+			color: $text-color;
+			font-weight: 800;
+			text-transform: uppercase;
+			.edd-cart-added-alert{
+				position: relative!important;	
+			}
+		}	
+	}
+
+	.campaign-item-modal{
+        .campaign-time-left{
+            font-size: 12px;
+            color: $theme-color-second;
+            font-weight: 800;
+            margin-bottom: 20px;
+            .title{
+                font-weight: 300;
+            }
+        }
+        .campaign-content{
+            text-align: center;
+            .barometer{
+                float: left;
+                width: 40%;
+                display: inline-block;
+                .funded{
+                    font-size: 45px;
+                    font-weight: 700;
+                    color: $theme-color;
+                    text-transform: uppercase;
+                    line-height: 50px;
+                    text-align: center;
+                    sup{
+                        top:0;
+                        font-weight: 300;
+                        font-size: 24px;
+                    }
+                }
+            }
+        }    
+        .desciption{
+        	margin-bottom: 15px;
+        }
+        ul.campaign-status{
+            float: left;
+            width: 40%;
+            > li{
+                list-style: none;
+                text-align: center;
+                position: relative; 
+                padding-bottom: 20px;
+                margin-bottom: 20px;                
+                .label{
+                    font-size: 14px;
+                    font-weight: 800;
+                    text-transform: uppercase; 
+                    color: $text-color;
+                    padding: 0;
+                }
+                .text{
+                    font-size: 24px;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    line-height: 1;
+                    margin: 0;
+                    color: $theme-color;
+                }
+                &:first-child:before{
+                    content: "";
+                    bottom: 0;
+                    left: 50%;
+                    border-top: 1px solid $text-color;
+                    width: 32px;
+                    position: absolute;
+                    margin-left: -16px;
+                }
+            }
+        }
+        .read-more{
+            font-weight: 800;
+            font-size: 14px;
+            color: $text-color;
+            &:hover{
+                color: $theme-color;
+            }
+        }
+        .modal-title{
+            text-transform: uppercase;
+            color: $text-color;
+        }
+        .edd_price_options{
+            width: 100%;
+            clear: both;
+            display: table;
+            ul{
+                >li {
+                    float: left;
+                    display: inline-block;
+                    background: $white;
+                    border: 1px solid $border-color;
+                    text-transform: uppercase; 
+                    font-weight: 800;
+                    color: $text-color;
+                    margin-right: 15px;
+                    position: relative;
+                    z-index: 9;
+                    @include transition(all 0.35s);
+                    h3{
+                        margin: 0;
+                    }
+                    label{
+                        margin: 0;
+                        color: $text-color;
+                        padding: 10px;
+                    }
+                    &.pledge-level{
+                        input{
+                            @include opacity(0);
+                            @include size(0, 0);
+                            position: absolute;
+                            z-index: 0;
+                        }
+                        &:hover{
+                            cursor: pointer;
+                            label{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    &.active{
+                        background: $theme-color;
+                        label{
+                            color: $white;
+                        }   
+                    }
+                    &.price-custom{
+                        padding: 8.5px 10px;
+                        .title{
+                            font-weight: 300;
+                            font-size: 12px;
+                            text-transform: none;
+                        }
+                        input{
+                            padding: 0;
+                            max-width: 70px;
+                            border: none;
+                            border-bottom: 1px solid $border-color;
+                        }
+                    }
+                }
+            }
+        }
+        .edd_purchase_submit_wrapper{
+            text-align: center;
+            margin-top: 30px;
+            .edd_go_to_checkout, .edd-add-to-cart{
+                @include border-radius(0);
+                border: none;
+                text-transform: uppercase;
+                font-weight: 800;
+                background: $theme-color;
+                color: $white;
+                font-size: 18px;
+                padding: 10px 15px;
+                @include transition(all 0.35s);
+                &:hover, &:focus{
+                    color: $text-color;
+                }
+            }
+            .edd-cart-ajax-alert{
+                display: block;
+                width: 100%;
+                text-color: center;
+                color: $text-color;
+                font-weight: 800;
+                text-transform: uppercase;
+                .edd-cart-added-alert{
+                    position: relative!important;   
+                }
+            }   
+        }
+    }
+}
+.single-post{
+	.ratings ul {
+		overflow: hidden;
+	}
+}
+.page .woocommerce{
+	min-height: 50px;
+}
+.main-page-default{
+	margin-top: 30px;
+	.post.sticky{
+		border: 2px solid $theme-color;
+		padding: 30px;
+	}
+}
+
+.single-portfolio{
+   .post-next{
+      margin-bottom: 15px;
+      a{
+         text-transform: uppercase;
+      }
+   }
+}

@@ -1,0 +1,129 @@
+#wpo-customize-panel .nav-tabs{
+    padding:0px;
+}
+.off-customize #main-preview {
+    margin-left: 0;
+}
+.off-customize #wpo-customize span {
+    margin-left: 22px;
+}
+.off-customize #wpo-customize .btn-show {
+    right: -56px;
+    transition: all 0.2s ease 0s;
+}
+.off-customize #wpo-customize {
+    left: -310px;
+}
+#customize-form {
+    position: relative;
+}
+#customize-form .accordion-heading{
+    padding: 5px 10px;
+}
+#customize-form .accordion-toggle{
+    font-size: 13px;
+}
+
+#customize-form .form-group label{
+    text-transform: capitalize;
+    font-size: 11px;
+    width: 135px;
+}
+
+#main-preview {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    margin-left: 300px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 0.2s;
+    transition-property: left, right, top, bottom, width, margin;
+}
+.colorpicker {
+    z-index: 99999;
+}
+#wpo-customize {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 1px #999999;
+    height: 100%;
+    left: -300px;
+    position: fixed;
+    top: 5px;
+    transition-duration: 0.2s;
+    transition-property: left, right, top, bottom, width, margin;
+    width: 300px;
+    z-index: 99998;
+}
+#wpo-customize.active{
+    left: 0;
+}
+
+#wpo-customize .wrapper{
+    overflow: auto;
+}
+
+#wpo-customize .group-input{
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+#wpo-customize .group-input label{
+    font-weight: bold;
+}
+
+#wpo-customize .accordion-heading{
+    cursor: pointer;
+}
+
+#wpo-customize .panelbutton{
+    border: solid 1px #CCC;
+    background: #F5F5F5;
+    padding: 9px 11px;
+    position: absolute;
+    right: -39px;
+    top: 230px;
+    border-left: none;
+    cursor: hand;
+    cursor: pointer;
+    -webkit-box-shadow: 1px 1px 2px #888888;
+    box-shadow: 1px 1px 2px #888888;
+}
+
+#wpo-customize .wrapper {
+    padding: 12px;
+}
+
+#customize-body{
+    height: 100%;
+    overflow-y:auto;
+}
+
+#customize-body input[type="text"] {
+    border-color: #DFDFDF;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    font-size: 11px;
+    line-height: 18px;
+    margin: 0;
+    padding: 3px 5px;
+    width: 50px;
+}
+.form-group {
+    margin-right: 6px;
+}
+
+.bi-wrapper > div {
+    border: 1px solid #999999;
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    margin: 3px 4px;
+    width: 20px;
+}
+.bi-wrapper > div.active {
+    border-color: #FF0000;
+}

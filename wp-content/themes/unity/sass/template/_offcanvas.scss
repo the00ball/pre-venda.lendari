@@ -1,0 +1,436 @@
+//
+// OFF-CANVAS
+// -------------------------------------
+#wpadminbar {
+    position: fixed !important;
+}
+// Button
+.off-canvas-toggle {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 100;
+    display: block;
+    @include rtl-right(140px);
+    @include border-radius(0);
+    @include square(68px);
+    @include border(0 0 0 1px, lighten($topbar-bg, 5%), solid);
+    top: $navbar-offcanvas-button-position;
+    .icon-bar{
+        color: $white;
+        background: $white !important;
+        margin: 24px 24px 0;
+        height: 4px;
+        @include border-radius(0);
+    }
+    &:hover,
+    &:active,
+    &:focus{
+        background: transparent !important;
+    }
+}
+
+// Inverse navbar
+#wpo-off-canvas{
+    background:$navbar-offcanvas-bg;
+    .wpo-search{
+        border: 0;
+        margin: 20px;
+        .input-search{
+            border: 0;
+            color: $white;
+            height: 40px;
+            background: $navbar-offcanvas-search-input-bg;
+            @include font-size(font-size,$font-size-base);
+            @include border-radius(0);
+            padding: 0 15px;
+        }
+        .btn-search{
+            background: $navbar-offcanvas-search-input-bg;
+            cursor: pointer;
+            @include border-radius(0);
+            .fa{
+                color: $white;
+            }
+        }
+    }
+    .navbar{
+        border: none;
+        @include box-shadow(0px -5px 1px -5px #32363A);
+    }
+    .navbar-nav{
+        margin: 0;
+        @include clear-list();
+    }
+    .mobile-menu-header{
+        @include font-size(font-size,25px);
+        text-transform: none;
+        color: $black;
+        text-align: center;
+        font-weight: 700;
+        margin: 0 20px 20px;
+    }
+}
+.navbar-offcanvas {
+    background-color: $navbar-offcanvas-bg;
+    border: none;
+    .navbar-brand {
+        color: $navbar-offcanvas-brand-color;
+        &:hover,
+        &:focus {
+            color: $navbar-offcanvas-brand-hover-color;
+            background-color: $navbar-offcanvas-brand-hover-bg;
+        }
+    }
+    .navbar-text {
+        color: $navbar-offcanvas-color;
+    }
+    .navbar-nav {
+    > li{
+        margin: 0;
+    }
+    > li > a {
+        @include border-radius(0);
+        @include font-size(font-size,$navbar-offcanvas-link-font-size);
+        text-transform: none;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1)!important;
+        color: $black;
+        font-weight: 700;
+        text-transform: uppercase;
+        &:hover,
+        &:focus {
+            color: $navbar-offcanvas-link-hover-color;
+            background-color: $navbar-offcanvas-link-hover-bg;
+        }
+    }
+    > .active > a {
+        color: $navbar-offcanvas-link-hover-color;
+        &,
+        &:hover,
+        &:focus {
+            color: $navbar-offcanvas-link-hover-color;
+        }
+    }
+    > .disabled > a {
+        &,
+        &:hover,
+        &:focus {
+            color: $navbar-offcanvas-link-disabled-color;
+            background-color: $navbar-offcanvas-link-disabled-bg;
+        }
+    }
+}
+
+// Darken the responsive nav toggle
+.navbar-toggle {
+    border-color: $navbar-offcanvas-toggle-border-color;
+    &:hover,
+    &:focus {
+        background-color: $navbar-offcanvas-toggle-hover-bg;
+    }
+    .icon-bar {
+        background-color: $navbar-offcanvas-toggle-icon-bar-bg;
+    }
+}
+
+.navbar-collapse,
+.navbar-form {
+    border-color: darken($navbar-offcanvas-bg, 7%);
+    border: 0;
+    @include box-shadow(none);
+    padding: 0;
+}
+
+// Dropdowns
+.navbar-nav {
+    .open
+    a {
+    &,
+    &:hover,
+    &:focus {
+        background-color: $navbar-offcanvas-link-hover-bg;
+    }
+    a{
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+}
+.dropdown > a:hover .caret {
+    border-top-color: $navbar-offcanvas-link-hover-color;
+    border-bottom-color: $navbar-offcanvas-link-hover-color;
+}
+.dropdown > a .caret {
+    display: block;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    top: 15px;
+    @include rtl-right(20px);
+    position: absolute;
+    color: $black;
+    &:before{
+        content: "\f105";
+        color: $black;
+        @include font-size(font-size,$font-size-base);
+        font-family: $theme-font-name;
+    }
+}
+.dropdown-menu{
+    display: block;
+    padding: 10px;
+    float: none;
+    width: percentage(1);
+    visibility: hidden;
+    @include opacity(0);
+    @include transition(all .25s ease);
+    background: lighten($navbar-offcanvas-bg, 10%);
+    .caret{
+        top: 5px;
+    }
+}
+
+@media (max-width: $screen-xs-max) {
+    .open .dropdown-menu {
+        @include opacity(1);
+        visibility: visible;
+        > .dropdown-header {
+            border-color: $navbar-offcanvas-border;
+        }
+        > li > a {
+            color: $navbar-offcanvas-link-color;
+            &:hover,
+            &:focus {
+                color: $navbar-offcanvas-link-hover-color;
+                background-color: $navbar-offcanvas-link-hover-bg;
+            }
+        }
+        > .disabled > a {
+            &,
+            &:hover,
+            &:focus {
+                color: $navbar-offcanvas-link-disabled-color;
+                background-color: $navbar-offcanvas-link-disabled-bg;
+            }
+        }
+      }
+    }
+}
+
+  .navbar-link {
+    color: $navbar-offcanvas-link-color;
+    &:hover {
+      color: $navbar-offcanvas-link-hover-color;
+    }
+  }
+}
+
+
+// The Wrapper
+// -------------------
+.noscroll {
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.wpo-wrapper {
+    position: relative;
+    z-index: 99;
+    overflow: visible;
+    @include rtl-left(0);
+    @include transition(transform 0.5s);
+    &::after {
+        position: absolute;
+        top: 0;
+        @include rtl-right(0);
+        @include size(0,0);
+        background: rgba($black,0.2);
+        content: '';
+        @include opacity(0);
+        @include transition(opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s);
+        z-index: 99999;
+    }
+}
+
+.off-canvas-open {
+    .wpo-wrapper::after {
+        @include size(100%,10000px);
+        @include opacity(1);
+        @include transition(opacity 0.5s);
+    }
+}
+
+
+// The Sidebar
+// -------------------
+.wpo-off-canvas {
+    @include rtl-left(0);
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    visibility: hidden;
+    width: $navbar-offcanvas-width;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    @include transition(all 0.5s);
+    &::after {
+        position: absolute;
+        top: 0;
+        @include rtl-right(0);
+        @include size(100%,100%);
+        background: rgba($black,0.2);
+        content: '';
+        @include opacity(1);
+        @include transition(opacity 0.5s);
+    }
+}
+
+.off-canvas-right.wpo-off-canvas {
+    display: none;
+}
+.off-canvas-right .off-canvas-right.wpo-off-canvas {
+    display: block;
+}
+
+html[dir="ltr"] .off-canvas-right.wpo-off-canvas {
+    @include rtl-left(auto);
+    @include rtl-right(0);
+}
+
+.off-canvas-open {
+    .wpo-off-canvas::after {
+        @include size(0,0);
+        @include opacity(0);
+        @include transition(opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s);
+    }
+    .off-canvas-current {
+        visibility: visible;
+    }
+}
+
+//
+// OFF-CANVAS CONTENT STYLES
+// -------------------------------------
+.wpo-off-canvas {
+    .wpo-off-canvas-body {
+        .close{
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            padding: 0;
+            color: $black;
+            @include rtl-margin(5px, 10px, 0, 0);
+            @include font-size(font-size, 17px);
+            @include border-radius(0);
+            @include square(35px);
+            @include opacity(1);
+        }
+        a {
+            &:hover,
+            &:focus {
+                color: $navbar-offcanvas-link-hover-color;
+            }
+        }
+    }
+}
+
+// OFF-CANVAS EFFECTS
+// -------------------------------------
+
+// Effect 2: Reveal
+// ----------------
+.off-canvas-effect-2.off-canvas-open .wpo-wrapper {
+    @include translate3d($navbar-offcanvas-width, 0, 0);
+}
+
+.off-canvas-effect-2.wpo-off-canvas {
+    z-index: 1;
+}
+
+.off-canvas-effect-2.off-canvas-open .off-canvas-effect-2.wpo-off-canvas {
+    @include transition(transform 0.5s);
+}
+
+.off-canvas-effect-2.wpo-off-canvas::after {
+    display: none;
+}
+
+.off-canvas-right.off-canvas-effect-2.off-canvas-open .wpo-wrapper {
+    @include translate3d(-$navbar-offcanvas-width, 0, 0);
+}
+
+// Effect 3: Push
+// --------------
+.off-canvas-effect-3.off-canvas-open .wpo-wrapper {
+    @include translate3d($navbar-offcanvas-width, 0, 0);
+}
+
+.off-canvas-effect-3.wpo-off-canvas {
+    @include translate3d(-100%, 0, 0);
+}
+
+.off-canvas-effect-3.off-canvas-open .off-canvas-effect-3.wpo-off-canvas {
+    @include transition(transform 0.5s);
+}
+
+.off-canvas-effect-3.wpo-off-canvas::after {
+    display: none;
+}
+
+.off-canvas-right.off-canvas-effect-3.off-canvas-open .wpo-wrapper {
+    @include translate3d(-$navbar-offcanvas-width, 0, 0);
+}
+
+.off-canvas-right.off-canvas-effect-3.wpo-off-canvas {
+    @include translate3d(100%, 0, 0);
+}
+
+
+//
+// Fix conflict with modal
+// -----------------------------------------------------
+.modal-open .wpo-wrapper {
+    position: static;
+}
+
+.navbar-header-topbar{
+    a{
+        position: static;
+        border: none;
+    }
+}
+
+#wpo-mainnav .navbar-header{
+    display: none;
+}
+
+#main-menu-offcanvas > li{
+    position: relative;
+    .caret.mobile-toggle{
+        position: absolute;
+        right: 20px;
+        top: 8px;
+        text-align: center;
+        padding-top: 1px;
+        display: block;
+        font-size: 20px;
+        @include size(35px, 35px);
+        background: #EEE;
+        @include border-radius(3px);
+        border: 1px solid $border-color;
+        &:hover{
+            cursor: pointer;
+            color: $theme-color;
+        }
+    } 
+    .mobile-dropdown-menu{
+        display: none;
+        margin-top: 10px;
+        &.show{
+            display: block;
+        }
+    }
+}

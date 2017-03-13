@@ -1,0 +1,33 @@
+/**
+ * $Desc
+ *
+ * @version    $Id$
+ * @package    wpbase
+ * @author     WPOpal  Team <wpopal@gmail.com, support@wpopal.com>
+ * @copyright  Copyright (C) 2014 wpopal.com. All Rights Reserved.
+ * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @website  http://www.wpopal.com
+ * @support  http://www.wpopal.com/support/forum.html
+ */
+
+// Core variables and mixins
+
+@import "vars/vars-global";             // Global Variables => Color , Padding, Margin ... etc
+@import "vars/variables";               // Variables Bootstrap
+@import "vars/template-vars";           // Element Variables  => header, container, footer ... etc
+@import "vars/woocommerce-vars";
+@import "mixins/mixins";
+@import "mixins/template-mixins";
+@import "rtl/rtl";                      // RTL
+
+// Stylesheet
+
+@import "template/woocommerce";
+@import "template/utilities";
+@import "template/theme-effect";
+@import "bootstrap/buttons";
+@import "template/woocommerce-page";
+@import "template/woocommerce-product";
+@import "template/woocommerce-widgets";
+@import "template/woocommerce-responsive";

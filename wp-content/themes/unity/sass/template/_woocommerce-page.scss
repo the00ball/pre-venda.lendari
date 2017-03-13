@@ -1,0 +1,28 @@
+/* Woocommerce page  */
+.checkout{
+    .checkbox{
+        margin-top: 24px;
+        margin-bottom: 12px;
+    }
+    .radio label,
+    .checkbox label{
+        margin-left: 0;
+        padding-left: 0;
+        .input-checkbox{
+            position: static;
+            margin: 0;
+        }
+    }
+    .payment_methods{
+        label{
+            padding-left: 20px;
+            .input-radio{
+                left: 0;
+                margin:6px 0 0 0;
+            }
+        }
+    }
+    #payment_method_paypal{
+        margin-top: 47px;
+    }
+}

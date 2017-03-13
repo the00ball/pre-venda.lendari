@@ -1,0 +1,90 @@
+
+// Button
+// -------------------------
+$btn-transform                          : uppercase;
+$btn-padding-vertical                   : 3px;
+$btn-padding-horizontal                 : 35px;
+$btn-font-size                          : 14px;
+$btn-line-height                        : 30px;
+$btn-border-radius                      : 4px;
+
+$btn-lg-padding-vertical                : 15px;
+$btn-lg-padding-horizontal              : 30px;
+$btn-lg-font-size                       : 18px;
+$btn-lg-line-height                     : $line-height-large;
+$btn-lg-border-radius                   : 5px;
+
+$btn-sm-padding-vertical                : 7px;
+$btn-sm-padding-horizontal              : 12px;
+$btn-sm-font-size                       : 10px;
+$btn-sm-line-height                     : $line-height-small;
+$btn-sm-border-radius                   : $border-radius-small;
+
+$btn-xs-padding-vertical                : 4px;
+$btn-xs-padding-horizontal              : 10px;
+$btn-xs-font-size                       : 10px;
+$btn-xs-line-height                     : $line-height-small;
+$btn-xs-border-radius                   : $border-radius-small;
+
+/*--Btn outline--*/
+$btn-outline-color                      : $black;
+$btn-outline-hover-color                : $white;
+$btn-outline-height                     : 10px;
+$btn-outline-bg                         : $white;
+$btn-outline-hover-bg                   : $nocolor;
+$btn-outline-border                     : 1px solid $nocolor;;
+$btn-outline-border-hover               : 1px solid rgba(136, 112, 96, 0.5)!important;
+$btn-outline-font-size                  : 14px;
+$btn-outline-line-height                : 20px;
+$btn-outline-border-radius              : 3px;
+
+
+$btn-outline-sm-padding-vertical        : 8px;
+$btn-outline-sm-padding-horizontal      : 18px;
+$btn-outline-sm-font-size               : 14px;
+$btn-outline-sm-line-height             : 1.3;
+$btn-outline-sm-border-radius           : 3px; 
+
+$btn-outline-xs-padding-vertical        : 5px;
+$btn-outline-xs-padding-horizontal      : 15px;
+$btn-outline-xs-font-size               : 14px;
+$btn-outline-xs-line-height             : 1.2;
+$btn-outline-xs-border-radius           : 3px;
+
+$btn-outline-lg-padding-vertical        : 21px;
+$btn-outline-lg-padding-horizontal      : 48px;
+$btn-outline-lg-font-size               : 18px;
+$btn-outline-lg-line-height             : 3;
+$btn-outline-lg-border-radius           : 4px;
+
+$btn-inverse-color                      : $gray-darker;
+$btn-inverse-hover-color                : $white;
+$btn-inverse-bg                         : $yellow;
+$btn-inverse-hover-bg                   : $theme-color;
+$btn-inverse-border-color               : $btn-inverse-bg;
+$btn-inverse-border-hover-color         : $btn-inverse-hover-bg;
+$btn-inverse-font-size                  : 14px;
+$btn-inverse-padding                    : 10px 15px;
+
+$btn-outline-inverse-color              : rgba(255, 255, 255, 0.5);
+$btn-outline-inverse-bg                 : $nocolor;
+$btn-outline-inverse-border-color       : 1px solid rgba(255, 255, 255, 0.5);
+$btn-outline-inverse-hover-bg           : $nocolor;
+$btn-outline-inverse-hover-color        : $white;
+$btn-outline-inverse-border-hover-color : 1px solid $white;
+$btn-outline-inverse-border-radius      : 3px; 
+
+$btn-donate-padding						: 3px 35px;
+$btn-donate-border-radius				: 3px;
+$btn-donate-color						: $white;
+$btn-donate-border-color				: $theme-color;
+$btn-donate-background 					: $theme-color;
+$btn-donate-hover-background			: $white;
+$btn-donate-hover-color					: $theme-color;
+$btn-donate-hover-border-color			: $theme-color;
+
+$btn-slide-padding                          	: 13px 25px !important;
+$btn-slide-font-size                        	: 14px !important;
+$btn-slide-height                           	: auto !important;
+$slideshow-arrow                                : $white;
+$slideshow-text-border                          : $white;

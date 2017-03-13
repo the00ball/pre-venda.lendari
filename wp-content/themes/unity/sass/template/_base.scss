@@ -1,0 +1,272 @@
+// Base
+//---------------------------------
+*{
+   
+}
+@include selection($white,$theme-color);
+iframe{
+	border: none;
+}
+del{
+    @include font-size(font-size, $del-font-size);
+    color: 	$del-color;
+}
+img{
+    border: 0;
+    vertical-align: top;
+    max-width: 100%;
+    height: auto;
+}
+.video-responsive {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 56.25%;
+    margin-bottom : 10px;
+    position: relative;
+    overflow: hidden;
+	embed,iframe,object,video{
+		top: 0;
+		left: 0;
+		position: absolute;
+        @include square(percentage(1));
+	}
+}
+ 
+.audio-responsive{
+	iframe{
+		@include size(percentage(1), 126px);
+	}
+}
+
+// Google Map
+//---------------------------------
+.map_canvas{
+	img{
+		max-width: none;
+	}
+}
+.spinner{
+	background-size: 20px 20px;
+	display: block;
+	margin:0 auto;
+    background: url('#{$image-theme-path}spinner.gif') no-repeat;
+    @include opacity(.7);
+    @include square(20px);
+}
+
+// Carousel
+//---------------------------------
+
+// Tabs
+//---------------------------------
+
+// Table
+//---------------------------------
+table,.table{
+	.amount{
+		@extend .price;
+	}
+	a.remove {
+		@include inline-block();
+		font-size:1.5em;
+		text-align: $align-center;
+		line-height: 1;
+		color: $theme-color;
+		text-decoration: none;
+		font-weight: bold;
+		@include size(1em,1em);
+		@include border-radius(20px);
+        &:hover{
+			background-color: $theme-color;
+			color: $white;
+		}
+	}
+	> thead > tr {
+		> th,
+		> td {
+			border-bottom-width: 0px;
+		}
+	}
+	&.shop_table{
+		@include size(100%,auto);
+		margin-top: $theme-margin + 1;
+		margin-bottom: $theme-margin + 1;
+		border: 1px solid $table-border-color;
+		> thead,
+		> tbody,
+		> tfoot {
+			> tr {
+				> th,
+				> td {
+					padding        : $table-cell-padding;
+					line-height    : $line-height-base;
+					vertical-align : top;
+					border         : 1px solid $table-border-color;
+				}
+			}
+		}
+		.button{
+			@include border-radius($btn-border-radius);
+		}
+	}
+	&.cart{
+		.product-remove{
+			vertical-align: middle;
+		}
+		.product-remove,.product-thumbnail{
+			text-align: $align-center;
+		}
+		.product-thumbnail{
+			img{
+				@include size(70px,70px);
+			}
+		}
+		.actions{
+			padding: 15px;
+			vertical-align: middle;
+		}
+	}
+	&.table--style{
+		.price{
+            display: table-cell;
+            vertical-align: middle;
+            font-size: $font-size-base;
+        }
+        .label{
+            padding: 10px;
+        }
+	}
+}
+
+#wp-calendar{
+  width: 100%;
+  margin-bottom: $line-height-computed;
+  @extend .table-bordered;
+  td,th{
+    padding: 5px;
+    text-align: center;
+  }
+  caption{
+    margin-bottom: 10px;
+  }
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 0px !important;
+    }
+  }
+  #today{
+      color: $theme-color;
+      font-weight: 700;
+  }
+}
+
+ul {
+ 	&.treemenu{
+	    li{
+	        padding: $block-sidebar-list-padding-vertical;
+	        background: $block-sidebar-list-image;
+	        text-transform: capitalize;
+	        border-bottom: 1px solid $block-sidebar-list-border-color;
+	        &:first-child{
+	            padding-top: 0;
+	            background-position: 0 10px;
+	        }
+	        &:last-child{
+	            border-bottom: 0;
+	            padding-bottom: 0;
+	        }
+	        > ul{
+	            @include rtl-padding-left($theme-padding);
+	            li{
+	                &:first-child{
+	                    padding-top: $block-sidebar-list-padding-vertical;
+	                }
+	            }
+	        }
+	    }
+	}
+    &.bullet{
+
+    }
+    &.hasicon{
+    	li{
+	        float: none;
+	        margin: 0 0 $padding-small-horizontal 0;
+	        .fa{
+                margin-top: 5px;
+	            @include rtl-margin-right($padding-small-vertical);
+	        }
+            br{display: none;}
+	    }
+    }
+    &.list-group-highlighted{
+    	margin-bottom: 0;
+    	li{
+    		margin: 10px 0;
+    		padding: 0;
+    		border: 0;
+    		background: $block-sidebar-hightlight-content-bg;
+    		@include rtl-text-align-left;
+    		a{
+    			color: $block-sidebar-hightlight-content-color;
+    			@include font-size(font-size, $block-sidebar-hightlight-font-size);
+                font-weight: $block-sidebar-hightlight-font-weight;
+    			text-transform: $block-sidebar-hightlight-transform;
+    			padding: 0px 5px;
+    			display: block;
+    			&:hover{
+    				color: $theme-color; 
+    			}
+    		}
+    		.count{
+    			color: $block-sidebar-hightlight-content-color;
+    			@include font-size(font-size, $block-sidebar-hightlight-font-size);
+    			font-weight: $block-sidebar-hightlight-font-weight;
+    			text-transform: $block-sidebar-hightlight-transform;
+				position: relative;
+				z-index: 100;
+    			margin: 0;
+    			top: 18px;
+    			@include rtl-right(5px); 
+                position: absolute;
+    			background: transparent;
+    		}
+    		ul{
+    			li{
+    				padding-left: 0;
+    				padding-right: 0;
+    			}
+    		}
+    		&:last-child{
+    			ul{
+    				li{
+    					&:last-child{
+	    					a{
+	    						border: 0;
+	    					}
+	    				}
+    				}
+    			}
+    		}
+    	}
+    }
+    &.contact-us{
+        text-align: center;
+        li{
+            color: $white;
+            .fa{
+                color: $theme-color;
+                @include font-size(font-size,20px);
+            }
+        }
+    }
+    &.list-contact{
+        li{
+            text-transform: none;
+            @include font-size(font-size,11px);
+        }
+    }
+}
+
+@import "../bootstrap/tables";

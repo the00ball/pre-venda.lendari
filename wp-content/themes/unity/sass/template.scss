@@ -1,0 +1,87 @@
+/**
+ * $Desc
+ *
+ * @version    $Id$
+ * @package    wpbase
+ * @author     WPOpal  Team <wpopal@gmail.com, support@wpopal.com>
+ * @copyright  Copyright (C) 2014 wpopal.com. All Rights Reserved.
+ * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @website  http://www.wpopal.com
+ * @support  http://www.wpopal.com/support/forum.html
+ */
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. Utilities
+2. Font
+3. Base
+4. Layout
+5. Page
+6. Post
+7. Slideshow
+8. Form
+9. Responsive
+10. Widget
+-------------------------------------------------------------------*/
+//@import "compass";
+@import "vars/vars-global";
+@import "vars/variables";
+@import "vars/template-vars";
+
+@import "vars/var_campaigns_events";
+
+/* 1. Utilities */
+@import "mixins/mixins";
+@import "mixins/template-mixins";
+@import "rtl/rtl";
+
+/* 2. Font */
+@import "template/font";
+
+/* 3. Base */
+@import "template/base";
+
+/* 4. Layout */
+@import "template/layout";
+
+/* 5. Layout */
+@import "template/pages";
+
+/* 6. Post */
+@import "template/post";
+
+@import "template/widgets-layout";
+
+/* 10. Widget */
+@import "template/widgets";
+
+@import "template/shortcodes";
+
+@import "template/offcanvas";
+
+@import "template/menu";
+
+/* 8. Form */
+@import "template/form";
+
+@import "template/style";
+
+@import "template/utilities";
+
+@import "template/visual-composer";
+
+/* 7. Slideshow */
+@import "template/slider";
+
+/* 9. Responsive */
+@import "template/responsive";
+
+@import "template/theme-effect";
+
+@import "template/editor-style";
+
+@import "template/campaign";
+
+@import "template/event";

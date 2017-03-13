@@ -1,0 +1,647 @@
+/*
+*  Responsive
+*/
+@mixin hidden-image() {
+    .wpo-sidebar{
+        .widget_sp_image{
+            display: none;
+        }
+    }
+}
+@mixin ios-input() {
+    input, textarea{
+        @include appearance();
+    }
+}
+@mixin dropdown-topbar() {
+    .active-mobile{
+        &:hover{
+            .active-content{
+                display: block;
+                @include opacity(1);
+                visibility: visible;
+            }
+        }
+        .menu-top-menu-header-container{
+            .menu{
+                li{
+                    float: none;
+                    line-height: 25px;
+                    a{
+                        padding: 0;
+                        border: 0;
+                        line-height: normal;
+                    }
+                }
+            }
+        }
+    }
+    .page-template[class*="template-news"] .wpo-mainbody.news-page{
+        margin: 0 0 30px 0;
+    }
+}
+
+// End
+
+@media (min-width: $screen-lg) {
+    .wpo-off-canvas,.off-canvas-toggle{
+        display: none;
+    }
+    .off-canvas-effect-2{
+        &.off-canvas-open{
+            .wpo-wrapper{
+                @include transform(none);
+            }
+        }
+    }
+}
+
+@media (max-width: 1280px){
+    .shop1{
+        overflow-x: hidden;
+    }
+    .wpo-off-canvas,.off-canvas-toggle{
+        display: none;
+    }
+}
+
+@media (max-width: $screen-md){
+    // menu
+    #main-menu{
+        margin: 0;
+        @include rtl-float-left;
+    }
+    .navbar-mega .navbar-nav > li .dropdown-menu .widget-title{
+        @include font-size(font-size,15px);
+    }
+    .wpo-off-canvas,.off-canvas-toggle{
+        display: none;
+    }
+    .off-canvas-effect-2.off-canvas-open .wpo-wrapper{
+        @include transform(none);
+    }
+    // slideshow
+    .tp-caption{
+        &.text-style-yellow-medium:after{
+            display: none;
+        }
+    }
+ 
+    .split-layout{
+        .main-posts{
+            .entry-content{
+                top: 50%;
+                padding-bottom: 0;
+            }
+        }
+        .secondary-posts{
+            .post{
+                @include square(172px);
+            }
+            .entry-title{
+                display: none;
+            }
+        }
+    }
+    .vc_pie_chart .wpb_descript{
+        display: none;
+    }
+    .wpo-portfolio .wpo-portfolio-content .entry-title-bottom{
+        font-size: 15px;
+        padding: 13px 15px;
+    }
+    .wpo-portfolio .wpo-portfolio-title .entry-title{
+        font-size: 14px;
+    }
+    .wpo-testimonial.skin-3 .item{
+        width: percentage(.7);
+    }
+
+    // brand logo
+    .widget-brand-logo{
+        .carousel-control{
+            height: 62px;
+        }
+    }
+
+    //blog
+    .blog-meta{
+        @include rtl-right(0);
+    }
+    .blog-type{
+        .entry-image{
+            @include square(auto);
+        }
+    }
+
+    // sidebar
+    .wpo-sidebar{
+        .widget .widget-title{
+            @include font-size(font-size,14px);
+        }
+        .media{
+            overflow: visible;
+            .pull-left{
+                float: none !important;
+                margin: 0 0 15px 0;
+                display: block;
+                @include square(percentage(1));
+            }
+            .media-body{
+                overflow: visible;
+                .star-rating{
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .wpo-category-filter{
+        .category-filter-image{
+            display: none;
+        }
+        .category-filter-content{
+            @include rtl-margin-left(28px);
+            @include rtl-margin-right(0px);
+            @include rtl-text-align-left;
+        }
+    }
+
+    // footer
+    .wpo-footer{
+        .widget-twitter li:first-child{
+            margin-bottom: auto;
+        }
+    }
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+    @include dropdown-topbar();
+    @include ios-input();
+    @include hidden-image();
+    .widget-twitter{
+        li:first-child{
+            margin: 0;
+        }
+    }
+    .wpo-topbar{
+        .container{
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+    .widget-brand-logo{
+        .carousel-control{
+            height: 44px;
+        }
+        .widget-brands-inner{
+            padding: 0;
+        }
+    }
+    .block-about{
+        .block-about-image{
+            img{
+                display: none;
+            }
+        }
+        .wpb_text_column{
+            padding-right: 30px;
+        }
+    }
+    .wpo-portfolio{
+        .wpo-portfolio-title{
+            .entry-title{
+                &:after{
+                    display: none;
+                }
+                @include font-size(font-size, $font-size-base);
+            }
+        }
+        .entry-title-bottom{
+            display: none;
+        }
+        &.portfolio-latest-project{
+            .wpo-portfolio-content{
+                .entry-title{
+                    display: none;
+                }
+            }
+        }
+    }
+    .split-layout{
+        .secondary-posts{
+            .post{
+                @include square(175px);
+                .entry-title{
+                    display: none;
+                }
+            }
+        }
+        .main-posts{
+            .entry-content{
+                top: 50%;
+                padding: 20px 20px 0 30px;
+            }
+        }
+    }
+    .wpo-grid-posts{
+        .posts-grid-category{
+            margin-bottom: 50px;
+        }
+    }
+    .wpo-counter{
+        .counter-number{
+            @include font-size(font-size,22px);
+        }
+        .counter-title{
+            display: none;
+        }
+    }
+    .wpo-pricing-table{
+        .plan-figure{
+            @include font-size(font-size,40px);
+        }
+        .plan-title{
+            @include font-size(font-size,12px);
+        }
+        .plan-currency{
+            @include font-size(font-size,20px);
+        }
+    }
+    .wpo-testimonial{
+        &.skin-1{
+            .testimonial-description{
+                @include font-size(font-size,18px);
+            }
+        }
+        &.skin-2{
+            .testimonial-info{
+                margin-bottom: 30px;
+            }
+        }
+        &.skin-3{
+            .testimonial-description{
+                @include font-size(font-size,18px);
+            }
+        }
+        &.skin-4{
+            .testimonial-info{
+                margin-bottom: 30px;
+            }
+        }
+    }
+    .fullwidthbanner-container{
+        height: 320px !important;
+    }
+    #wpo-header{
+    	.logo-in-theme{
+    		float: none !important;
+    	}
+    	#main-menu{
+    		margin: 0 auto;
+    	}
+    }
+    .wpo-megamenu{
+        .navbar-collapse{
+            padding: 0;
+        }
+        &.navbar-mega-full-width{
+            .container{
+                border: 0;
+            }
+        }
+        #main-menu{
+            text-align: center;
+            width: percentage(1);
+            > li{
+                float: none;
+                @include inline-block();
+            }
+            .dropdown-menu{
+                @include rtl-text-align-left;
+                .wpo-widget{
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+    .blog-type{
+        .entry-image{
+            height: auto;
+        }
+    }
+    .blog{
+        &.style2{
+            .entry-content{
+                min-height: 240px;
+            }
+            .blog-date{
+                display: none;
+            }
+            .entry-title,.entry-description{
+                padding: 0 20px;
+            }
+        }
+    }
+    .vc_pie_chart{
+        .wpb_pie_chart_descript{
+            display: none;
+        }
+    }
+    .active-mobile{
+        width: 60px;
+        .fa,.icon{
+            @include font-size(font-size,25px);
+            &:hover{
+                color: $white;
+            }
+        }
+    }
+    .wpo-off-canvas,.off-canvas-toggle{
+        display: none;
+    }
+    .off-canvas-effect-2.off-canvas-open .wpo-wrapper{
+        @include transform(none);
+    }
+    .navbar-header{
+        display: none;
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    @include dropdown-topbar();
+    @include ios-input();
+    @include hidden-image();
+    .active-mobile{
+        width: 70px;
+        > .fa, > .icon{
+           font-size: 25px!important;
+        }
+    }
+    .topbar{
+        padding: 0;
+        .user-login{
+            padding-top: 15px;
+        }
+    }
+    .wpo-megamenu{
+        min-height: inherit;
+    }
+    .widget-twitter{
+        li:first-child{
+            margin: 0;
+        }
+    }
+    .wpo-portfolio-filters{
+        li{
+            margin-bottom: 10px;
+        }
+    }
+    .woocommerce-tabs{
+        .nav-tabs{
+            margin-bottom: 20px;
+            li{
+                @include rtl-float-left();
+                margin-right: 10px;
+            }
+        }
+    }
+    .wpo-footer{
+        .footer-top:before{
+            display: none;
+        }
+    }
+    .wpo-off-canvas,
+    .off-canvas-toggle{
+        display: block;
+    }
+    .block-pie-chart-ourskills{
+        background-image: none;
+    }
+    .blog{
+        &.style2{
+            margin-bottom: 30px;
+            .blog-date{
+                display: none;
+            }
+            .entry-title,
+            .entry-description{
+                padding: 0 20px;
+            }
+        }
+    }
+    .blog-type{
+        .entry-image{
+            height: auto;
+        }
+    }
+    .wpo-ourservice{
+        margin-bottom: 30px !important;
+    }
+    .wpo-inforbox{
+        padding-top: 30px;
+        min-height: inherit;
+    }
+    .wpb-container .block-services .wpb-container{
+        padding: 30px 30px 30px 60px;
+    }
+    .block-about .wpb_text_column{
+        padding: 30px;
+    }
+    .wpo-inforbox.inforbox-latest-project{
+        min-height: inherit;
+    }
+    .split-layout{
+        display: none;
+    }
+    .posts-grid-category{
+        margin: 0 0 30px 0;
+    }
+    .posts-grid{
+        .post{
+            margin-bottom: 20px;
+        }
+    }
+    .posts-list{
+        .post{
+            margin-bottom: 20px;
+            .entry-thumb{
+                float: none;
+                margin: 0 0 20px 0;
+                @include size(100%,inherit);
+            }
+            .entry-title{
+                line-height: inherit;
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-xs-max) {
+    @include dropdown-topbar();
+    @include ios-input();
+    @include hidden-image();
+    .#{$app-prefix}-topbar{
+        padding: 0;
+        .user-login{
+            padding-top: 15px;
+        }
+        .container{
+            padding: 0;
+        }
+    }
+    .logo-in-theme{
+        float: none !important;
+    }
+    .container-full-width{
+        padding: 0 15px;
+    }
+    .wpo-off-canvas,
+    .off-canvas-toggle{
+        display: block;
+    }
+    .active-mobile{
+        &.setting-popup{
+            .active-content{
+                width: 100%;
+                min-width: 320px;
+                right: -100%;
+                left: auto;
+            }
+        }
+    }
+    .wpo-category-filter{
+        margin-bottom: 30px !important;
+        .category-filter-image{
+            display: none;
+        }
+        .category-filter-content{
+            text-align: left;
+            padding-right: 0;
+            padding-left: 20px;
+        }
+    }
+    .products{
+        .carousel-control{
+            top: -64px;
+        }
+    }
+}
+
+
+@media (max-width: $screen-phone) {
+    @include dropdown-topbar();
+    @include ios-input();
+    @include hidden-image();
+    .font-size-lg{
+        @include font-size(font-size,20px);
+    }
+    .visual-description{
+        display: none;
+    }
+    .wpo-off-canvas,
+    .off-canvas-toggle{
+        display: block;
+    }
+
+    .wpo-ourservice{
+        .ourservice-heading{
+            @include font-size(font-size,18px);
+            min-height: inherit;
+            margin: inherit;
+            padding: inherit;
+            &
+            ::before,
+            ::after{
+                display: none;
+            }
+        }
+        .ourservice-icon{
+            display: none;
+        }
+        &.circle{
+            .ourservice-heading{
+                padding: 0;
+            }
+        }
+    }
+    .wpo-portfolio{
+        .wpo-portfolio-title{
+            .entry-title{
+                @include font-size(font-size,$font-size-base);
+            }
+        }
+        .wpo-portfolio-content{
+            .entry-title-bottom{
+                padding: 10px;
+                @include font-size(font-size,$font-size-base);
+            }
+        }
+    }
+    .wpo-pricing-table{
+        margin-bottom: 30px !important;
+        .plan-title{
+            @include font-size(font-size,$font-size-base);
+        }
+        .plan-figure{
+            @include font-size(font-size,30px);
+        }
+        .plan-currency{
+            @include font-size(font-size,15px);
+        }
+    }
+    .active-mobile{
+        .active-content{
+            padding: 20px 40px;
+        }
+        &.setting-popup{
+            .active-content{
+                width: 100%;
+                min-width: 320px;
+                right: -100%;
+                left: auto;
+            }
+        }
+    }
+    .wpo-footer{
+        .mc4wp-form{
+            input.btn{
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    }
+}
+
+@media(max-width: $screen-md-max){
+    .nav > li > a{
+        margin: 0 15px!important; 
+    }
+}
+
+@media(max-width: $screen-sm-max){
+    .sm-text-center{
+        text-align: center;
+        ul li{
+            text-align: center!important;
+            &:before{
+                left: 50%!important;
+                margin-left: -20px!important;
+            }
+        }
+    }
+}
+
+@media(max-width: $screen-xs-max){
+    .xs-text-center{
+        text-align: center;
+        ul li{
+            text-align: center!important;
+            &:before{
+                left: 50%!important;
+                margin-left: -20px!important;
+            }
+        }
+    }
+}
+

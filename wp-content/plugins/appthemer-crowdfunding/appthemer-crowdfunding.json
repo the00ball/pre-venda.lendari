@@ -1,0 +1,22 @@
+{
+    "name" : "Crowdfunding with Easy Digital Downloads",
+    "slug" : "appthemer-crowdfunding",
+    "homepage" : "http://wpopal.com/",
+    "download_url" : "http://www.wpopal.com/thememods/appthemer-crowdfunding.zip",
+    
+    "version" : "1.9.6.4",
+    "requires" : "4.0",
+    "tested" : "4.6.0",
+    "last_updated" : "2016-08-26 12:00:00",
+    "upgrade_notice" : "Here's why you should upgrade...",
+    
+    "author" : "WPOPAL",
+    "author_homepage" : "http://wpopal.com/",
+    
+    "sections" : {
+        "description" : "Implement rich functions for themes base on prestabrain wordpress framework and load widgets for theme used, this is required.",
+        "installation" : "Upload or install by notice required the Wpopal Framework For Themes plugin to your site, Activate it.",
+        "changelog" : " Changelog. <h4>1.9.6.4</h4><p><em>Release Date - 26 August 2016</em><ul><li>Fix function count backers_count.</li></ul><h4>1.9.6.3</h4><p><em>Release Date - 29 February 2016</em><ul><li>Added check update plugin.</li></ul><h4>1.9.6.2</h4><p><em>Release Date - 21 January 2016</em><ul><li>Fix: Correctly save the campaign goal after saving a campaign..</li></ul>"
+    }
+    
+}

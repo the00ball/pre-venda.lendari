@@ -1,0 +1,110 @@
+//@import "compass";
+// Core variables and mixins
+@import "vars/vars-global";             // Global Variables => Color , Padding, Margin ... etc
+@import "vars/variables";               // Variables Bootstrap
+@import "vars/template-vars";           // Element Variables  => header, container, footer ... etc
+@import "mixins/mixins";
+@import "mixins/template-mixins";
+@import "rtl/rtl";                      // RTL
+
+
+/*------------------------------------*\
+    Customize Live Theme Editor
+\*------------------------------------*/
+#wpo-customize{
+    top: 0;
+    border: 0;
+    font-family: 'Open Sans',sans-serif;
+    transform: translateZ(0px);
+    -webkit-transform: translateZ(0px);
+    -moz-transform: translateZ(0px);
+    -o-transform: translateZ(0px);
+    -ms-transform: translateZ(0px);
+    @include transition(left 0.5s ease-in-out 0s);
+    @include box-shadow(3px 2px 5px 0 rgba(50, 50, 50, 0.2));
+    background: $white;
+    .panel{
+      border-color: lighten($black, 78);
+      .accordion-inner{
+        padding: 10px;
+        border-color: lighten($black, 78);
+      }
+    }
+    .panelbutton{ 
+        border-color: darken($border-color, 5%);
+        @include box-shadow(3px 3px 5px -3px rgba($black, 0.15));
+    }
+    .panel-heading{
+        padding: 3px 10px;
+    }
+    .group-input{
+        margin-top: 0;
+        margin-bottom: 15px;
+        @include rtl-margin-right(6px);
+    }
+    .nav{
+      border: 0;
+      a{
+        color: $black;
+        padding: 5px 10px;
+        background: $white;
+        @include border-radius(0);
+        @include rtl-margin(0, 3px, 3px, 0);
+        border: 1px solid lighten($black, 78);
+        &:hover{
+          background: $white;
+        }
+        &::before{
+          display: none;
+        }
+      }
+      .active{
+        > a, &:hover,&:focus,&:active{
+          background: $white;
+          &::before{
+            display: none;
+          }
+        }
+      }
+    }
+    .label{
+      padding: 4px 5px;
+    }
+    select,input[type="text"]{
+      @include border-radius(0);
+      border-color: lighten($black, 78);
+    }
+    .accordion-toggle{
+      @include font-size(font-size,12px);
+      text-transform: uppercase;
+      color: $black;
+      &:hover{
+        color: $black;
+      }
+    }
+    .panelbutton{
+        background: $theme-color;
+        @include rtl-right(-40px);
+        @include box-shadow(none);
+        color: $white;
+        border: 0;
+        padding: 0;
+        display: table;
+        @include font-size(font-size,18px);
+        text-align: center;
+        @include size(40px,40px);
+        @include border-right-radius(3px);
+        @include border-right-radius(3px);
+        @include transition(all 0.3s ease-in-out 0s);
+        > *{
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    .panel-heading{
+        padding: 2px 5px;
+    }
+    .form-group label{
+      color: lighten($black, 50%);
+    }
+}

@@ -1,0 +1,79 @@
+$block-sidebar-heading-font-size				: 18px;
+$block-sidebar-heading-padding                  : 0 0 20px;
+$block-sidebar-module-border					: none;
+$block-sidebar-box-padding						: 20px;
+
+
+$block-module-margin-bottom                     : 20px;
+$block-module-padding                           : 60px 0 40px;
+$block-module-border-color                      : $nocolor;
+$block-module-heading-border                    : 0px;
+$block-module-heading-transform                 : uppercase;
+$block-module-heading-line-height               : normal;
+$block-module-heading-bg                        : $nocolor;
+$block-module-heading-padding                   : 20px 0 15px;
+$block-module-heading-margin                    : 0 0 15px;
+$block-module-heading-font-size                 : 24px;
+$block-module-heading-font-weight               : 700;
+$block-module-heading-color                     : $theme-color;
+$block-module-heading-show-separator            : none;
+$block-module-heading-image-position            : 0 0;
+$block-module-content-bg                        : $white;
+$block-module-content-border                    : 1px solid $border-color;
+$block-module-content-padding                   : 20px;
+$block-module-content-margin                    : 1px;
+$block-module-content-radius                    : 0px;
+
+$block-sidebar-heading-hightlight-bg            : $theme-color;
+$block-sidebar-heading-hightlight-margin-bottom : 0px;
+$block-sidebar-heading-hightlight-margin		: 0;
+$block-sidebar-hightlight-link-color			: #999999;
+$block-sidebar-heading-hightlight-font-size     : 18px;
+$block-sidebar-heading-hightlight-font-weight   : 300;
+$block-sidebar-heading-hightlight-bg            : $theme-color;
+$block-sidebar-heading-hightlight-padding       : 15px 0 15px 20px;
+$block-sidebar-heading-hightlight-color         : $white;
+$block-sidebar-heading-hightlight-margin		: 0;
+$block-sidebar-hightlight-content-bg			: #3C424C;
+$block-sidebar-hightlight-content-padding		: 0;
+$block-sidebar-hightlight-content-color			: #999999;
+$block-sidebar-hightlight-border   				: 1px solid rgba(255, 255, 255, 0.1);
+$block-sidebar-hightlight-font-size 			: 14px;	
+$block-sidebar-hightlight-transform 			: none;
+$block-sidebar-hightlight-font-weight			: 400;	
+$block-sidebar-list-hightlight-padding          : 12px 0;
+$block-sidebar-list-hightlight-bg               : none;
+
+$topbar-bg                                      : #3C424C;
+$topbar-link-color                              : $white;
+$topbar-link-hover-color                        : $theme-color;
+$topbar-color                                   : #999999;
+$topbar-font-size								: 12px;
+
+$header-padding-top                             : 0;
+$header-padding-bottom                          : 0;
+$header-margin-bottom                           : 0;
+
+$footer-bg                                      : #121713;
+$footer-color                                   : $white;
+$footer-link-color                              : $white;
+$footer-link-hover-color                        : $theme-color;
+
+$footer-heading-color							: $theme-color;
+
+$footer-top-bg 									: $white;
+$footer-top-padding-top							: 15px; 
+$footer-top-padding-bottom						: 15px;
+$footer-top-font-size							: 16px;
+$footer-top-letter-spacing						: 2px;
+$footer-top-color								: $black;
+$footer-font-size                               : 16px; 
+$footer-link-font-size                          : 16px; 
+
+$copyright-bg                                   : #121713;
+$copyright-color                                : $white ;
+$copyright-link-color                           : $theme-color;
+$copyright-padding-top                          : 35px;
+$copyright-padding-bottom                       : 35px;
+$copyright-link-color                           : $theme-color;
+$copyright-font-size							: 16px;

@@ -1,0 +1,1161 @@
+.atcf-submit-campaign{
+	padding-bottom: 36px; 
+    .atcf-submit-section{
+        text-transform: uppercase;
+        color: #828282;
+        position: relative;
+        padding: 45px 0 15px;
+        margin: 0 0 30px;
+        display: table;
+        width: 100%;
+        &:after{
+            content: "";
+            bottom: 0;
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: $theme-color;
+            left: 0;
+        }
+    }
+	.atcf-toggle-neverending{
+		margin-left: 15px;
+	}
+	.atcf-submit-campaign-reward{
+        margin-top: 25px;
+        position: relative;
+        display: table;
+        width: 100%;
+		.atcf-submit-campaign-reward-amount, .atcf-submit-campaign-reward-name, .atcf-submit-campaign-reward-limit{
+            width: 33.33%;
+            float: left;
+            padding-left: 30px;
+        }
+        .atcf-submit-campaign-reward-amount{
+            padding-left: 0;
+        }
+        .atcf-submit-campaign-reward-remove{
+            @include size(45px, 45px);
+            position: absolute;
+            left: -65px;
+            top: 27px;
+            z-index: 9;
+            border: 1px solid $border-color;
+            margin: 0;
+            label {
+                display: none;
+            }
+            a{ 
+                text-align: center;
+                top: -15px;
+                font-size: 18px;
+                display: block;
+                position: relative;
+                @include size(45px, 45px);
+            }    
+        }
+	}
+	> p{
+		margin-bottom: 15px;
+	}
+     input[type="file"], input[type="text"], input[type="number"], select, textarea{
+        width: 100%;
+        border: 1px solid $border-color;
+    }
+    input[type="text"]{
+        height: 45px;
+    }
+    input[type="file"]{
+        padding: 10px;
+        background: #EBEBEB;
+        position: relative;
+    }
+	.atcf-submit-campaign-category,
+    .atcf-submit-campaign-tag{
+		width: 100%;
+        clear: both;
+        overflow: hidden;
+	}
+    
+    label{
+        width: 100%;
+        display: block;
+        font-weight: 300;
+    }
+   
+    .atcf-multi-select {
+        list-style: none;
+        overflow: hidden;
+        padding-left: 15px;
+        li {
+            float: left;
+            width: 50%;
+            input[type=checkbox] {
+                margin-left: 0;
+                margin-right: 0;
+                width: auto;
+            }
+        }    
+    }
+    .campaign-submit-column{
+        &.left > *{
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.atcf-submit-campaign-description .mce-edit-area{
+	border-left: 1px solid rgba(0, 0, 0, 0.1)!important;
+	border-right: 1px solid rgba(0, 0, 0, 0.1)!important;
+}
+
+.atcf-submit-campaign-reward {
+	border-bottom: 1px solid $border-color;
+	margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+.atcf-submit-campaign-add-reward{
+    margin-top: 30px;
+    a{
+        border: 1px solid $border-color;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 10px 30px;
+        em{
+            font-style: normal;
+        }
+    }
+}
+
+.atcf-submit-campaign-submit {
+	margin: 12px 0; 
+    .button {
+        float: left;
+        margin:30px 15px 0 0;
+        background: $theme-color;
+        padding: 10px 30px;
+        text-transform: uppercase;
+        font-weight: 700;
+        @include box-shadow(0);
+        border: none;
+        &:hover{
+            color: $white;
+            background: $theme-color-second;
+        }
+    } 
+}
+
+.atcf-submit-campaign-submit .button-secondary {
+	float: left;
+}
+
+
+/**************************************\
+	Page checkout crowfunding
+\**************************************/
+
+#edd-anon-wrap{
+	input[type="checkbox"], input[type="radio"]{
+		width: 20px!important;
+	}
+}
+
+/**************************************\
+	Item campaign
+\**************************************/
+.item-campaign-wrapper{
+	margin-bottom: $grid-gutter-width;
+    .entry-thumbnail{
+        position: relative;
+        overflow: hidden;
+        &:after{
+            content: "";
+            top: 0;
+            left: 0;
+            @include size(100%, 100%);
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 9;
+            @include opacity(0);
+            position: absolute;
+        }
+        .donate-now{
+            @include transition(all 0.35s);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 9;
+            margin-left: -72px;
+            margin-top: -20px;
+            @include opacity(0);
+            z-index: 99;
+        }
+    }
+    .entry-title {
+        text-align: center;
+        height: 80px;
+        display: table;
+        vertical-align: bottom;
+        width: 100%;
+        a{
+            line-height: 20px;
+            font-size: 18px;
+            font-weight: 800;
+            display: block;
+            position: relative;
+            padding: 20px 0;
+            display: table-cell;
+            vertical-align: bottom;
+            &:after{
+                content: "";
+                width: 55px;
+                height: 3px;
+                background: $theme-color;
+                left: 50%;
+                margin-left: -22.5px; 
+                position: absolute;
+                bottom: 0;
+            }
+        }    
+    }
+    .desciption {  
+        padding: 20px 0 5px;
+    } 
+    .campaign-main{
+        @include transition(all 0.35s);
+        span{
+            @include transition(color 0.35s);
+        }
+        ul.campaign-status{
+            padding: 15px 0;
+            border-bottom: 1px solid $border-color;
+            display: table;
+            width: 100%;
+            > li{
+                display: block;
+                list-style: none;
+                float: left;
+                text-align: center;
+                border-right: 1px solid $border-color;
+                &:last-child{
+                    border-right: none;
+                }
+                &.campaign-raised, &.campaign-backers{
+                    width: 30%;
+                }
+                 &.campaign-funded{
+                    width: 40%;
+                }
+                span{
+                    color: #afafaf;
+                    display: block;
+                    line-height: 1;
+                    &.label{
+                        font-size: 12px;
+                        font-weight: 300;
+                        text-transform: uppercase;
+                    }
+                    &.text{
+                        font-weight: 18px;
+                        font-weight: 800;
+                    }
+                    &.funded{
+                        font-size: 30px;
+                        font-weight: 800;
+                    }
+                }
+            } 
+        }
+    }
+
+    &:hover{
+        .entry-thumbnail:after{
+            @include opacity(1);
+        }
+        ul.campaign-status{
+            border-color: $nocolor;
+        }
+        .campaign-main{ 
+            background: $theme-color; 
+            span{
+                color: $white!important; 
+            }
+        } 
+        .donate-now{
+            @include opacity(1);
+
+        }
+    }
+
+    //-----Display style 2 ---------
+    &.style-2{
+        background: $white;
+        .body-inner{
+            padding: 30px;
+        }
+        .entry-title{
+            text-align: left;
+            display: inline-block;
+            height: auto;
+            min-height: 40px;
+            margin-bottom: 15px;
+            a{
+                padding: 0;
+                &:after{
+                    content: none;
+                }
+            }
+        }
+        .entry-date{
+            background-color: $white;
+            @include size(60px, 60px);
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            left: 20px;
+            text-align: center;
+            font-family: $font-family-second;
+            line-height: 1.1;
+            padding: 8px 0;
+            .day{
+                font-size: 24px;
+                font-weight: 700;
+                margin: 0;
+            }
+            .month{
+                font-size: 14px;
+                font-weight: 700;
+                margin: 0;
+            }
+        }
+        .campaign-main-style-2{
+            @include transition(all 0.35s);
+            span{
+                @include transition(color 0.35s);
+            }
+            .process{
+                width: 100%;
+                height: 8px;
+                position: relative;
+                overflow: hidden;
+                margin-bottom: 10px;
+                @include border-radius(8px);
+                background: #CFCFCF;
+                .processing{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    background: $theme-color;
+                }
+            }
+            ul.campaign-status{
+                display: table;
+                width: 100%;
+                padding: 0;
+                > li{
+                    display: block;
+                    list-style: none;
+                    float: left;
+                    text-align: center;
+                    &:first-child{
+                        text-align: left;
+                        float: left;
+                    }
+                    &:last-child{
+                        text-align: right;
+                        float: right;
+                    }
+                    &.campaign-raised, &.campaign-backers{
+                        width: 30%;
+                    }
+                     &.campaign-funded{
+                        width: 40%;
+                    }
+                    span{
+                        display: block;
+                        line-height: 1;
+                        font-weight: 14px;
+                        font-weight: 700;
+                        color: $text-color;
+                        &.label{
+                            display: none;
+                        }
+                    }
+                } 
+            }
+        }
+    }
+    //-----Display style 3 ---------
+    &.style-3{
+        background: $white;
+        .body-inner{
+            padding: 30px;
+        }
+        .entry-heading{
+            text-align: left;
+            display: inline-block;
+            height: auto;
+            min-height: 75px;
+            margin-bottom: 15px;
+            .entry-title{
+                display: block;
+                height: auto;
+                margin: 0;
+                text-align: left;
+                a{
+                    text-transform: uppercase;
+                    font-weight: 700;
+                }
+            }    
+            .location{
+                font-weight: 300;
+                font-size: 14px;
+                text-transform: none;
+                margin: 5px 0 0;
+                color: #b4b4b4;
+                span{
+                    margin-right: 10px;
+                }
+                i{
+                    margin-right: 5px;
+                }
+            }
+            a{
+                padding: 0;
+                &:after{
+                    content: none;
+                }
+            }
+        }
+        .entry-date{
+            display: none;
+        }
+        .campaign-main-style-3{
+            position: relative;
+            display: table;
+            width: 100%;
+            > div:first-child{
+                padding-right: 30px!important;
+            }
+            .campaign-main-inner{
+               margin-top: 5px;
+            }
+            .donate-now{
+                text-align: right;
+            }
+            .process{
+                width: 100%;
+                height: 8px;
+                position: relative;
+                overflow: hidden;
+                margin-bottom: 10px;
+                @include border-radius(8px);
+                background: #CFCFCF;
+                .processing{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    background: $theme-color;
+                }
+            }
+            ul.campaign-status{
+                display: table;
+                width: 100%;
+                padding: 0;
+                margin-bottom: 10px;
+                > li{
+                    display: block;
+                    list-style: none;
+                    float: left;
+                    text-align: center;
+                    &:first-child{
+                        text-align: left;
+                        float: left;
+                    }
+                    &:last-child{
+                        text-align: right;
+                        float: right;
+                    }
+                    &.campaign-raised, &.campaign-backers{
+                        width: 40%;
+                    }
+                     &.campaign-funded{
+                        width: 20%;
+                    }
+                    span{
+                        display: block;
+                        line-height: 1;
+                        font-weight: 14px;
+                        font-weight: 700;
+                        color: $text-color;
+                        &.label{
+                            display: none;
+                        }
+                    }
+                }  
+            }
+        }
+    }
+}
+
+.campaign-successful, .campaign-unsuccessful{
+    display: block;
+    font-size: $campaign-funded-font-size;
+    left: 0;
+    font-weight: 800;
+    line-height: 1;
+    margin: $campaign-funded-margin;
+    padding: $campaign-funded-padding;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 0;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    width: $campaign-funded-width;
+    height: $campaign-funded-height;
+    z-index: 99;
+}
+.campaign-successful{
+    background: $campaign-funded-successful-bg;
+    color: $campaign-funded-successful-color;
+}
+.campaign-unsuccessful{
+    background: $campaign-funded-unsuccessful-bg;
+    color: $campaign-funded-unsuccessful-color;
+}
+
+/****************** Model Form ******************************/
+/************************************************************/
+.campaign-item-modal{
+    .campaign-time-left{
+        font-size: 12px;
+        color: $theme-color-second;
+        font-weight: 800;
+        margin-bottom: 20px;
+        .title{
+            font-weight: 300;
+        }
+    }
+    .campaign-content{
+        text-align: center;
+        .barometer{
+            float: left;
+            width: 40%;
+            display: inline-block;
+            .funded{
+                font-size: 45px;
+                font-weight: 700;
+                color: $theme-color;
+                text-transform: uppercase;
+                line-height: 50px;
+                text-align: center;
+                sup{
+                    top:0;
+                    font-weight: 300;
+                    font-size: 24px;
+                }
+            }
+        }
+    }    
+    ul.campaign-status{
+        float: left;
+        width: 40%;
+        > li{
+            list-style: none;
+            text-align: center;
+            position: relative; 
+            padding-bottom: 20px;
+            margin-bottom: 20px;                
+            .label{
+                font-size: 14px;
+                font-weight: 800;
+                text-transform: uppercase; 
+                color: $text-color;
+                padding: 0;
+            }
+            .text{
+                font-size: 24px;
+                font-weight: 800;
+                text-transform: uppercase;
+                line-height: 1;
+                margin: 0;
+                color: $theme-color;
+            }
+            &:first-child:before{
+                content: "";
+                bottom: 0;
+                left: 50%;
+                border-top: 1px solid $text-color;
+                width: 32px;
+                position: absolute;
+                margin-left: -16px;
+            }
+        }
+    }
+    .read-more{
+        font-weight: 800;
+        font-size: 14px;
+        color: $text-color;
+        &:hover{
+            color: $theme-color;
+        }
+    }
+    .modal-title{
+        text-transform: uppercase;
+        color: $text-color;
+    }
+    .edd_price_options{
+        width: 100%;
+        clear: both;
+        display: table;
+        margin-top: 15px;
+        ul{
+            >li {
+                float: left;
+                display: inline-block;
+                background: $white;
+                border: 1px solid $border-color;
+                text-transform: uppercase; 
+                font-weight: 800;
+                color: $text-color;
+                margin-right: 15px;
+                position: relative;
+                z-index: 9;
+                @include transition(all 0.35s);
+                h3{
+                    margin: 0;
+                }
+                label{
+                    margin: 0;
+                    color: $text-color;
+                    padding: 10px;
+                    position: relative;
+                }
+                &.pledge-level{
+                    input{
+                        @include opacity(0);
+                        @include size(0, 0);
+                        position: absolute;
+                        z-index: 0;
+                        @include size(100%, 100%);
+                        top: 0;
+                        left: 0;
+                        margin: 0;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                    &:hover{
+                        cursor: pointer;
+                        label{
+                            cursor: pointer;
+                        }
+                    }
+                }
+                &.active{
+                    background: $theme-color;
+                    label{
+                        color: $white;
+                    }   
+                }
+                &.price-custom{
+                    padding: 8.5px 10px;
+                    .title{
+                        font-weight: 300;
+                        font-size: 12px;
+                        text-transform: none;
+                    }
+                    input{
+                        padding: 0;
+                        max-width: 70px;
+                        border: none;
+                        border-bottom: 1px solid $border-color;
+                    }
+                }
+            }
+        }
+    }
+    .edd_purchase_submit_wrapper{
+        text-align: center;
+        margin-top: 30px;
+        .edd_go_to_checkout, .edd-add-to-cart{
+            @include border-radius(0);
+            border: 1px solid $text-color;
+            color: $text-color;
+            background: $nocolor;
+            padding: 8px 25px;
+            text-align: center;
+            @include border-radius($btn-donate-border-radius);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 14px;
+            &:hover{
+                background: $theme-color;
+                border-color: $theme-color;
+                color: $white;
+            }
+        } 
+        .edd-cart-ajax-alert{
+            display: block; 
+            width: 100%;
+            text-color: center;
+            color: $text-color;
+            font-weight: 800;
+            text-transform: uppercase;
+            .edd-cart-added-alert{
+                position: relative!important;   
+            }
+        }   
+    }
+}
+
+/**************************************************************/
+.widget_campaign_backers_widget{
+    ul{
+        padding: 0;
+    }
+    .campaign-backer{
+        list-style: none;
+        width: 33.33%;
+        float: left;
+        text-align: center;
+        @media(max-width: $screen-sm-max){
+            width: 100%;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+        .if-tiny-hide{
+            text-align: left;
+            h6{
+                font-weight: 300;
+                font-size: 12px;
+            }
+            p{
+                font-weight: 800;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+/********************Campaigns featured ******************/
+/********************************************************/
+.campaigns-tab-featured{
+    .carousel-indicators{
+        bottom: -10px!important;
+        > li{
+            background: $text-color;
+            border: none;
+            @include size(10px, 10px);
+            &.active{
+                @include size(10px, 10px);
+                background: $theme-color;
+            }
+        }
+    }
+    .slide{
+        padding-bottom: 50px;
+    }
+    .item-campaign{
+        ul.campaign-status{
+            padding: 0;
+            > li{
+                list-style: none;
+                text-align: left;
+                position: relative; 
+                padding-bottom: 20px;
+                margin-bottom: 13px;
+                &:before{
+                    content: ""; 
+                    bottom: 0;
+                    left: 0;
+                    border-top: 1px solid $text-color;
+                    width: 32px;
+                    position: absolute;
+                }                
+                .label{
+                    font-size: 14px;
+                    font-weight: 800;
+                    text-transform: uppercase; 
+                    color: $text-color;
+                    padding: 0;
+                }
+                .text{
+                    font-size: 24px;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    line-height: 1;
+                    margin: 0;
+                    color: $theme-color;
+                }
+                &:last-child:before{
+                    content: none;
+                }
+            }
+        }
+        .barometer-main{
+            text-align: center;
+            @media(max-width: $screen-sm-max){
+                margin-top: 30px;
+            }
+            .barometer{
+                float: none;
+                display: inline-block;
+                .funded{
+                    font-size: 45px;
+                    font-weight: 700;
+                    color: $text-color;
+                    text-transform: uppercase;
+                    line-height: 50px;
+                    text-align: center;
+                    sup{
+                        top:0;
+                        font-weight: 300;
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+        .campaign-time-left{
+            font-size: 14px;
+            color: $theme-color-second;
+            font-weight: 300; 
+            padding: 15px 0;
+            display: table;
+            width: 100%;
+            .title{
+                font-weight: 900;
+                text-transform: uppercase;
+            }
+        }
+
+    }
+
+    .item-campaign.item-layout-1{
+        .campaign-title a{
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 36px;
+            color: $theme-color;
+            text-transform: uppercase;
+        }
+        .entry-description{
+            margin-top: -5px;
+            line-height: 24px;
+            padding-left: 15px;
+            > p:first-child:first-letter { 
+                float: left; 
+                background-color: $theme-color; 
+                color: $white;
+                font-size: 40px;
+                padding: 10px;
+                margin: 5px 10px 10px 0;
+                font-weight: 800;
+                text-transform: uppercase;
+            } 
+            .readmore a{
+                font-weight: 800;
+            }   
+        }
+        .campaign-content > *{
+            width: 48%;
+            float: left;
+        }
+    
+        .barometer-main{
+            padding-left: 15px;
+        }
+        
+        .quick-donate{
+            margin-top: 15px;
+        }
+    }
+
+    .item-campaign.item-layout-2{
+        .campaign-title{
+            position: absolute;
+            border: 1px solid $white;
+            padding: 30px;
+            width: 70%;
+            bottom: 30px;
+            left: 30px;
+            a{
+                font-weight: 700;
+                font-size: 36px;
+                color: $white;
+                font-family: $font-family-second;
+                line-height: 1;
+            } 
+        }
+        .barometer{
+            float: none;
+            display: inline-block;
+        }
+        .column{
+            min-height: 366px;
+        }
+        .column-barometer{
+            background: #F9F9F9;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .column-status{
+            background: $theme-color-second;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            ul.campaign-status{
+                li{
+                    text-align: center;
+                    &:before{
+                        content: none;
+                    }
+                    .label{
+                        color: $white;
+                    }
+                }
+            }
+        }    
+    }
+    .item-campaign.item-layout-3{
+        padding: 0 15%;
+        @media(width: $screen-sm-max){
+            padding: 0;
+        }
+        .campaign-title{
+            padding: 30px;
+            text-align: center;
+            a{
+                font-weight: 700;
+                font-size: 30px;
+                color: $white;
+                font-family: $font-family-second;
+                line-height: 1;
+                text-transform: uppercase;
+            } 
+        }
+        .campaign-des{
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 0 30px;
+            @media(width: $screen-sm-max){
+                padding: 0;
+            }
+        }
+        .campaign-main-style-3{
+            margin: 50px 0;
+            @media(width: $screen-sm-max){
+                padding: 0;
+            }
+            .process{ 
+                width: 100%;
+                height: 15px;
+                position: relative;
+                overflow: hidden;
+                margin-bottom: 10px;
+                @include border-radius(8px);
+                background: $nocolor;
+                border: 1px solid $white;
+                .processing{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    background: $white;
+                }
+            }
+            ul.campaign-status{
+                display: table;
+                width: 100%;
+                padding: 0;
+                > li{
+                    display: block;
+                    list-style: none;
+                    float: left;
+                    text-align: center;
+                    padding: 0;
+                    &:before{
+                        content: none;
+                    }
+                    &:first-child{
+                        text-align: left;
+                        float: left;
+                    }
+                    &:last-child{
+                        text-align: right;
+                        float: right;
+                    }
+                    &.campaign-raised, &.campaign-backers{
+                        width: 30%;
+                    }
+                     &.campaign-funded{
+                        width: 40%;
+                    }
+                    span{
+                        display: block;
+                        line-height: 1;
+                        font-weight: 14px;
+                        font-weight: 700;
+                        color: $white;
+                        &.label{
+                            display: none;
+                        }
+                    }
+                } 
+            }
+        }  
+        .link > a{
+            margin-right: 15px;
+            &:last-child{
+                margin-right: 0;
+            }
+        }  
+    }
+} 
+
+/****** Widget Campaign Author *******/
+/************************************/
+.widget_campaign_author{
+    .author-info{
+        display: table;
+        > *{
+            display: table-cell;
+        }
+        .author-avatar{
+            width: 40%;
+            padding-right: 15px;
+        }
+        .author-stats{
+            vertical-align: middle;
+            h6{
+                font-weight: 900;
+                font-size: 18px;
+                line-height: 14px;
+                margin-bottom: 5px;
+                color: $text-color;
+            }
+            p{
+                font-weight: 300;
+                font-size: 14px;
+            }
+        }
+    }
+    .desc{
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+/********* Checkout Form *************/
+/************************************/
+#edd_checkout_cart{
+    margin-bottom: 40px;
+    .edd_cart_header_row{
+        th{
+            background: #5D5D5D;
+            text-transform: uppercase;
+            color: $white;
+            font-weight: 800;
+            font-size: 18px;
+            border: none;
+            text-align: center;
+            padding: 15px;
+            &.edd_cart_item_name{
+                text-align: left;
+                padding-left: 30px;
+            }
+        }
+    }
+    .edd_cart_item{
+        > td{
+            background: $theme-color-third;
+            border-color: #EAEAEA;
+            &:first-child{
+                border-left: none;
+            }
+            &:last-child{
+                border-right: none;
+            }
+        }
+        .edd_cart_item_name {
+            padding: 30px;
+            img{
+                width: 120px;
+            }
+            .edd_checkout_cart_item_title{
+                font-weight: 800;
+                font-size: 24px;
+                text-transform: uppercase;
+                padding-left: 30px;
+            }
+        }
+        .edd_cart_item_price{
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .edd_cart_actions{
+            text-align: center;
+            a{
+                font-size: 14px;
+                background: #DCDCDC;
+                display: block;
+                padding: 8px 10px;
+                text-align: center;
+                text-transform: uppercase;
+                &:hover{
+                    color: $white;
+                    background: $theme-color;
+                }
+            }
+        }
+    }
+    .edd_cart_total{
+        font-weight: 300;
+        font-size: 18px;
+        text-transform: uppercase;
+        padding: 25px 40px;
+        background: $theme-color-third;
+        border: none;
+        .edd_cart_amount{
+            font-size: 18px;
+            font-weight: 800;
+        }
+    }    
+}
+
+.atcf-register, .atcf-login{
+    form{
+        > p{
+            label{
+                width: 100%;
+            }
+            input[type='password'], input[type='text']{
+                width: 100%;
+                background: $white;
+                border: 1px solid $border-color;
+            }
+        }
+    }
+    .button-primary{
+        border: 1px solid $border-color;
+        padding: 10px 15px;
+        text-transform: uppercase;
+        font-weight: 700;
+        @include transition(all 0.35s);
+        &:hover{
+            background: $theme-color;
+            color: $white;
+            border-color: $theme-color;
+        }
+    }
+}

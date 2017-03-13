@@ -1,0 +1,165 @@
+
+/**
+* Web Application Prefix Apply For Making Owner Styles
+*/
+
+$app-prefix                      : wpo !default;
+$vc-prefix                       : wpb_ !default;
+
+/**
+ *   Blocks Layout Selectors
+ */
+$block-prefix                    : 'widget' !default;
+$block-selector                  : 'widget' !default;
+$block-heading-selector          : 'widget-title,.widgettitle,.wpb_heading' !default;
+$block-content-selector          : 'widget-content' !default;
+$block-heading-reversed-selector : 'widget-title-reversed' !default;
+$container-prefix                : 'wpb-container' !default;
+
+
+// Themes colors
+// -------------------------
+$theme-color                     : #FED857 !default;
+$theme-color-second  			 : #5D5D5D !default;
+$theme-color-third				 : #F4F4F4 !default;
+$theme-color-default             : $theme-color !default;
+$theme-color-hover               : $theme-color !default;
+$theme-color-secondary           : #262a2e !default;
+$link-color                      : $black !default;
+
+$image-theme-path                : '../images/' !default;
+$image-theme-skin                : '../images/' !default;
+$woo-font-path                   : '../fonts/woocommerce/' !default;
+
+$image-icon-url                  : "../images/icons/global.png";
+
+// Font-family
+// -------------------------
+$fa-version                      : 4.0.3 !default;
+$theme-font-name                 : 'FontAwesome' !default;
+$theme-font-path                 : '../fonts/' !default;
+$icon-font-name                  : 'FontAwesome' !default;
+
+// Typography
+// -------------------------
+$font-size-lg                    : 30px !default;
+$font-size-md                    : 24px !default;
+$font-size-sm                    : 18px !default;
+$font-size-xs                    : 14px !default;
+$text-lead-font-size             : 18px !default;
+$icon-font-size-base             : 14px !default;
+$headings-transform              : none !default;
+$text-hightlight                 : $black !default;
+$close-font-size                 : 20px !default;
+
+// Body
+// -------------------------
+$body-bg-image                   : none !default; 
+
+// Size Image Icon
+// -------------------------
+$image-icon-size                 : 40px !default;
+
+// Breadcrumbs
+// -------------------------
+$breadcrumb-font-size            : $font-size-base + 4 !default;
+$breadcrumb-border               : none !default;
+$breadcrumb-box-shadow           : 0 5px 5px -5px rgba(0, 0, 0, 0.2) inset !default;
+$breadcrumb-padding-top          : 90px !important;
+$breadcrumb-padding-bottom       : 35px !important;
+$breadcrumb-margin               : 0 0 30px !default; 
+$breadcrumb-link-color           : #5d5d5d !default;
+$breadcrumb-link-hover-color     : #5d5d5d !default;
+$breadcrumb-layout-bg            : #F5F5F5;
+$breadcrumb-alignment            : left !default;
+$breadcrumb-title-font-weight    : 800 !default;
+$breadcrumb-title-font-size      : 24px !default;
+$breadcrumb-line-height			 : 30px !default;
+
+$breadcrumb-name-font-size		 : 24px !default;
+$breadcrumb-name-font-weight	 : 800 !default;
+$breadcrumb-name-color			 : #5d5d5d !default;
+
+// Carousel
+// -------------------------
+$carousel-border                 : 1px solid darken($border-color, 20%) !default;
+$carousel-font-size              : 20px !default;
+$carousel-font-color             : $black !default;
+$carousel-control-height         : 35px !default;
+
+// Well - Wrapper
+// -------------------------
+$well-padding                    : $theme-padding * 2 !default;
+$well-box-shadow                 : none !default;
+$well-border-radius              : 0 !default;
+
+// Social
+// -------------------------
+$social-display                  : inline-block;
+$social-bg                       : #133F48 !default;
+$social-color                    : $gray-darker !default;
+$social-hover-color              : $white !default;
+$social-size                     : 46px !default;
+$social-margin                   : 0 20px 0 0 !default;
+$social-border-radius            : percentage(.5) !default;
+
+// Box
+// -------------------------
+$box-container-margin            : 30px !default;
+$box-container-bg                : transparent !default;
+$box-container-border            : 1px solid $border-color !default;
+$box-container-inner-bg          : transparent !default;
+$box-container-first-margin      : 0 !default;
+
+$box-highlighted-bg              : $gray-darker url("#{$image-theme-path}bg-counter.png") no-repeat 0 0;
+$box-highlighted-margin          : 0px !default;
+$box-highlighted-container-bg    : transparent !default;
+
+$box-heading-margin              : 0 0 30px 0 !default;
+$box-heading-line-bg             : $theme-color !default;
+$box-heading-padding             : 0 0 $theme-margin 0 !default;
+$box-heading-font-size           : 18px !default;
+
+// Pagination
+// -------------------------
+$pagination-active-bg-color      : $theme-color !default;
+$pagination-active-border-color  : $theme-color !default;
+$pagination-hover-bg-color       : $theme-color !default;
+$pagination-hover-link-color     : $white !default;
+$pagination-hover-border-color   : $theme-color !default;
+
+// Thumbnail
+// -------------------------
+$thumbnail-margin-bottom         : 20px !default;
+
+// Tabs
+// -------------------------
+$nav-tabs-color                  : $text-color !default;
+$nav-tabs-link-font-size         : 14px !default;
+$nav-tabs-link-font-weight       : 900 !default;
+$nav-tabs-border-radius          : 0px !default;
+$nav-tabs-padding                : 0 20px !default;
+$nav-tabs-margin                 : 0 !default;
+$nav-tabs-font-weight            : 900 !default; 
+
+
+$nav-tabs-left-font-weight		 : 900!default;
+// Contact Us
+// -------------------------
+$contact-bg                      : $nocolor !default;
+$contact-icon-bg                 : $theme-color !default;
+$contact-icon-size               : 22px !default;
+$contact-icon-color              : $white !default; 
+$contact-icon-border-radius      : 2px !default;
+
+$overlay_dark_fallback			 : #111111 !default; 
+$overlay_dark 					 : #333333 !default; 
+$overlay_dark_dark				 : #111111 !default; 
+@import
+    "form",
+    "layout",
+    "menu",
+    "page",
+    "post-vars",
+    "visual-vars",
+    "widget";

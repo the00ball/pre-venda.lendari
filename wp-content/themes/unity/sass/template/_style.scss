@@ -1,0 +1,827 @@
+// Mixin for generating new styles
+@mixin bg-styles($color) {
+  background-color:$color;
+}
+.bg-primary {
+  @include bg-styles( $brand-primary );
+}
+// Success appears as green
+.bg-success {
+  @include bg-styles( $brand-primary );
+}
+// Info appears as blue-green
+.bg-info {
+  @include bg-styles( $brand-primary );
+}
+// Warning appears as orange
+.bg-warning {
+  @include bg-styles( $brand-primary );
+}
+// Danger and error appear as red
+.bg-danger {
+  @include bg-styles( $brand-primary );
+}
+
+// Mixin for generating new styles
+@mixin text-styles($color) {
+  color:$color;
+}
+.text-primary {
+  @include text-styles( $brand-primary );
+}
+// Success appears as green
+.text-success {
+  @include text-styles( $brand-success );
+}
+// Info appears as blue-green
+.text-info {
+  @include text-styles( $brand-info );
+}
+// Warning appears as orange
+.text-warning {
+  @include text-styles( $brand-warning );
+}
+// Danger and error appear as red
+.text-danger {
+  @include text-styles( $brand-danger );
+}
+
+.text-skin {
+  @include text-styles( $theme-color );
+}
+
+.text-hightlight {
+  @include text-styles( $text-hightlight );
+}
+.bg-right{
+  background-position: 100% 0 !important;
+}
+.box-advert > div{
+  background: $white;
+  padding: 20px;
+}
+.heading-padding-large{
+  .widget-title{
+    padding-bottom: 20px;
+  }
+}
+
+.box-header{
+  display: table;
+  margin-top: 20px;
+  > div{
+    float: left;
+  }
+  .icon {
+    @include size(35px, 35px);
+    @include border-radius(50%);
+    border: 1px solid #f99b17;
+    text-align: center;
+    line-height: 44px;
+    margin-right: 5px;
+    margin-top: 6px;
+    i{
+      font-size: 30px;
+      color: #f99b17;
+      width: 13px;
+    }
+  }  
+  .text-small{
+    font-family: $font-family-second;
+    font-size: 11px;
+    font-weight: 300;
+    color: $text-color;
+    display: block;
+  }
+  .text-large{
+    font-family: $font-family-second;
+    font-size: 18px;
+    font-weight: 300;
+    color: #f99b17;
+    display: block;
+  }
+}
+.caret{
+  border: none;
+  font-family: "FontAwesome";
+  font-size: 11px;
+  @include size(auto, auto);
+  &:before{
+    content: "\f107";
+  }
+}
+/*------------------------------------*\
+    Tabs
+\*------------------------------------*/
+.tabs-list{
+  border: 0;
+  @include rtl-text-align-left();
+}
+
+/*------------------------------------*\
+    Breadcrumbs
+\*------------------------------------*/
+.breadcrumb{
+	> .fa{
+    @include rtl-margin(0, 5px, 0, 5px);
+  }
+}
+
+/*------------------------------------*\
+    Customize Live Theme Editor
+\*------------------------------------*/
+#wpo-customize{
+  #customize-form{
+    > .group-input{
+
+    }
+  }
+  top: 0;
+  border: 0;
+  transform: translateZ(0px);
+  -webkit-transform: translateZ(0px);
+  -moz-transform: translateZ(0px);
+  -o-transform: translateZ(0px);
+  -ms-transform: translateZ(0px);
+  @include transition(left 0.5s ease-in-out 0s);
+  @include box-shadow(3px 2px 5px 0 rgba(50, 50, 50, 0.2));
+  background: $white;
+  .panel{
+    border-color: lighten($black, 78);
+    .accordion-inner{
+      padding: 10px;
+      border-color: lighten($black, 78);
+    }
+  }
+  .panelbutton{
+    border-color: darken($border-color, 5%);
+    @include box-shadow(3px 3px 5px -3px rgba($black, 0.15));
+  }
+  .panel-heading{
+    padding: 3px 10px;
+  }
+  .group-input{
+    margin-top: 0;
+    margin-bottom: 15px;
+    @include rtl-margin-right(6px);
+  }
+  .nav{
+    border: 0;
+    a{
+      color: $black;
+      padding: 5px 10px;
+      background: $white;
+      @include border-radius(0);
+      @include rtl-margin(0, 3px, 3px, 0);
+      border: 1px solid lighten($black, 78);
+      &:hover{
+        background: $white;
+      }
+      &::before{
+        display: none;
+      }
+    }
+    .active{
+      > a, &:hover,&:focus,&:active{
+        background: $white;
+        &::before{
+          display: none;
+        }
+      }
+    }
+  }
+  .label{
+    padding: 4px 5px;
+  }
+  select,input[type="text"]{
+    @include border-radius(0);
+    border-color: lighten($black, 78);
+  }
+  .accordion-toggle{
+    @include font-size(font-size,12px);
+    text-transform: uppercase;
+    color: $black;
+    width: percentage(1);
+    @include inline-block();
+    &:hover{
+      color: $black;
+    }
+  }
+  .panelbutton{
+    background: $theme-color;
+    @include rtl-right(-40px);
+    @include box-shadow(none);
+    color: $white;
+    border: 0;
+    padding: 0;
+    display: table;
+    @include font-size(font-size,18px);
+    text-align: center;
+    @include size(40px,40px);
+    @include border-right-radius(3px);
+    @include border-right-radius(3px);
+    @include transition(all 0.3s ease-in-out 0s);
+    > *{
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .panel-heading{
+    padding: 2px 5px;
+  }
+  .form-group label{
+    color: lighten($black, 50%);
+  }
+}
+
+/*-------------------------------------------
+	Modal
+-------------------------------------------*/
+.modal-content {
+	@include box-shadow(none);
+	@include border-radius(0);
+}
+.modal-lg {
+  width: 900px;
+  &.modal-min-width{
+    @include size(500px,auto);
+    min-height: 90px;
+    .modal-content{
+      border: 0;
+    }
+  }
+  .total,.buttons{
+    text-align: center;
+  }
+}
+
+/*-------------------------------------------
+	Pagination
+-------------------------------------------*/
+.#{$app-prefix}-pagination{
+  @include clearfix;
+  .pagination,
+  .page-numbers{
+    margin: 0;
+    border: 0;
+  }
+}
+
+.result-count{
+	padding: 5px 0;
+	margin: 0;
+}
+
+/*------------------------------------*\
+    Mobile
+\*------------------------------------*/
+.active-mobile{
+	@include size(44px,70px);
+	text-align: center;
+  line-height: 70px;
+  position: relative;
+  cursor: default;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  @include transition(all 0.3s ease 0s);
+  text-align: center;
+  padding-top: 4px;
+  &:before{
+    background-color: lighten($topbar-bg, 5%);
+    content: "";
+    display: block;
+    @include size(1px,40px);
+    @include rtl-left(0);
+    margin-top: -20px;
+    position: absolute;
+    top: 50%;
+    display: none;
+  }
+  &:first-child:before{
+    display: none;
+  }
+  &:hover{
+    background-color: lighten($topbar-bg, 5%)!important;
+    cursor: pointer;
+    &:before{
+      display: none;
+    }
+    .active-content{
+      @include rtl-left(auto);
+    }
+  }
+  > .fa, > .icon{
+    color: $white;
+  }
+  &.cart-popup{
+      .fa,.icon{
+          display: none;
+      }
+      background: url('#{$image-theme-path}cart-m.svg') no-repeat center center;
+  }
+  .wpo-search{
+    border: 0;
+    background-color: #212121;
+    padding-top: 0;
+    .input-search,.btn-search{
+      background-color: transparent;
+      color: $white;
+    }
+    .input-search{
+      @include font-size(font-size,15px);
+    }
+    .btn-search{
+      .fa{
+        color: $white;
+      }
+    }
+  }
+  .active-content{
+    position: absolute;
+    top: 100%;
+    z-index: 9999;
+    color: $topbar-link-color;
+    padding: $theme-margin;
+    background-color: lighten($topbar-bg, 5%);
+    @include rtl-left(-10000px);
+    @include opacity(0);
+    position: absolute;
+    min-width: 270px;
+    visibility: hidden;
+    @include rtl-right(0);
+    @include rtl-text-align-left();
+    @include transition(opacity 0.3s ease 0s);
+  }
+  &.cart-popup{
+    .active-content{
+      background-color: lighten($topbar-bg, 5%);
+      min-width: 320px;
+    }
+  }
+  .title{
+    color: $white;
+    @include rtl-margin(0, 0, 10px, 0);
+    padding-bottom: $padding-large-vertical;
+    border-bottom: 1px solid lighten($topbar-bg, 10%);
+  }
+  ul{
+    padding: 0;
+    li{
+      display: block;
+      margin: 0;
+      padding: 10px 0;
+      line-height: normal;
+      text-transform: none;
+      @include font-size(font-size,$font-size-base);
+    }
+  }
+  .navbar-toggle{
+    position: static;
+    background: none;
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    position: static;
+  }
+}
+
+
+.page-title{
+  margin: $page-title-margin;
+  @extend .blog-title;
+  font-size: 20px;
+}
+
+
+/*------------------------------------*\
+    Custom Panel
+\*------------------------------------*/
+.custom-panel {
+  border: 0;
+  .panel-footer{
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: $panel-inner-border;
+  }
+}
+
+.pricing-tables{
+  .panel-heading{
+    border-color: $border-color;
+  }
+  .panel-footer{
+    border-top: 0px;
+  }
+}
+
+/*---------------------------------------*\
+    Box service footer
+/*---------------------------------------*/
+.box-service{
+  overflow: hidden;
+  padding:0 16.6667%;
+  .box-content{
+    overflow: hidden;
+    padding: 95px 0 75px;
+    .small-text, .tiny-text {
+      display: inline-block;
+      @include font-size(font-size, $font-size-base - 2);
+      color: $white;
+      text-transform: uppercase;
+      font-weight: 400;
+      position: relative;
+      padding: 0 15px;
+      &:after,&:before{
+        height: 1px; 
+        width: 500px;
+        position: absolute;
+        background: rgba(255, 255, 255, 0.3);
+        top: 50%;
+        content: "";
+      } 
+      &:after{
+        left: 100%;
+      }
+      &:before{
+        right: 100%;
+      }
+    }
+    .large-text{
+      font-size: 30px;
+      font-weight: 900;
+      padding: 15px 0;
+      display: block;
+      color: $theme-color;
+      &.yellow{
+        color: $yellow;
+      }
+    }
+    .tiny-text{
+      text-transform: none;
+    }
+  }
+}
+
+/*---------------------------------------*\
+    Box service top
+/*---------------------------------------*/
+.box-top{
+  width: 100%;
+  >div{
+    text-align: center;
+  }
+  .box-service-top .box-content{
+    display: inline-block;
+    > div{
+      float: left;
+    }
+    .icon{
+      width: 45px;
+      margin-right: 0;
+      @include transition(all 0.35s);
+      i{
+        width: 45px;
+        @include transition(all 0.35s);
+        color: $black;
+        font-size: 35px;
+      }
+    }  
+    .description{
+      text-align: left;
+      line-height: 12px;
+      padding-top: 6px;
+      .large-text{
+        font-size: 10px;
+        color: $black;
+        text-transform: uppercase;
+        font-weight: 700;
+        display: block;
+        clear: both;
+        line-height: 1.4;
+      }
+      .small-text{
+        font-size: 11px;
+        color: #999999;
+      }
+    } 
+    &:hover{
+      .icon{
+        margin-right: 10px;
+        i{
+          color: $theme-color;
+        }
+      }
+    } 
+  }
+}
+
+.carousel.slide{
+  position: relative;
+  .carousel-indicators{
+    >li{
+      background: #CECECE;
+      @include size(10px, 10px);
+      border: none!important;
+      margin: 0;
+      margin-right: 15px;
+      &:last-child{
+        margin-right: 0;
+      }
+      &.active{
+        background: $theme-color;
+        @include size(10px, 10px);
+      }
+    }
+  }
+}
+/*---------------------------------------*\
+     
+\*---------------------------------------*/
+
+.tabs-left > .nav-tabs {
+  border-bottom: 0;
+  float: left;
+  margin-right: 0;
+  padding-right: 10px;
+  background: $nocolor;
+  @include border-radius(0);
+  width: auto;
+  min-width: 16.6667%;
+  &:after, &:before{
+    content:none;
+  }
+  li{
+    float: none;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid $border-color;
+    a{
+      margin-right: 0;
+      padding: 0;
+      @include font-size(font-size, 12px);
+      font-weight: $nav-tabs-left-font-weight;
+      color: #aaaaaa;
+      margin-right: -1px;
+      background: $nocolor;
+      &:after, &:before{
+        content: none;
+      }
+      &:hover, &:focus{
+        background: $nocolor;
+        color: $theme-color;
+        font-weight: $nav-tabs-left-font-weight;
+      }
+    }
+    &:hover{
+      border-color: $theme-color;
+    }
+    &.active{
+      border-color: $theme-color;
+      background: $nocolor;
+      a, a:hover, a:focus{
+        font-weight: $nav-tabs-left-font-weight;
+        color: $theme-color;
+      }
+    }
+  }
+}
+.tabbable {
+  overflow: hidden;
+}
+
+/*---------------------------------------*\
+    Panel color dark
+\*---------------------------------------*/
+.panel-dark{
+  > .wpb-inner > .row{
+    padding: 40px;
+    margin: 0!important;
+    background: #F4F4F4!important;
+  }
+}
+
+/*---------------------------------------*\
+    Nav tabs skin for theme
+\*---------------------------------------*/
+.tab-theme{
+  .nav-tabs-theme{
+    background-color: $white;
+    > li {
+      float: left;
+      a{
+        color: #e4e4e4;
+        font-size: 36px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 0 30px;
+        margin: 0;
+        background-color: $white;
+        &:hover, &:focus{
+          background-color: $white;
+          color: $theme-color;
+        }
+      }
+      &.active a{
+        color: $white;
+        background: $theme-color;
+        border-top: 3px solid $theme-color-second;
+      }
+    }
+  }
+  .tab-content{
+    padding: 30px;
+  }
+}
+
+.return-top{
+  @include size(40px, 40px);
+  @include border-radius(3px);
+  background: #E5E5E5;
+  position: fixed;
+  bottom: 80px;
+  right: 80px;
+  z-index: 999;
+  color: #9C9C9C;
+  padding-top: 4px;
+  display: none;
+  > span{
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+  }
+  &:hover{
+    background: $theme-color;
+    color: $white;
+    cursor: pointer;
+  }
+}
+
+.barometer {
+  position: relative; 
+  float: left;
+  margin-right: 10px; margin-right: 1rem;
+  z-index: 30;
+  width: 146px; width: 14.6rem; 
+  height: 146px; height: 14.6rem; 
+}
+
+.barometer span {
+  position: absolute;
+  left: 0;
+  top: 47px; 
+  width: 100%; 
+  text-align: center;
+  display: inline-block;
+  font-size: 16px; 
+  font-style: italic;
+  opacity: 0; 
+}
+
+.barometer span span {
+  position: static;
+  font-size: 30px; font-size: 3rem;
+  line-height: 30px; line-height: 3rem;
+  font-style: normal;
+}
+
+.vertical-midde{
+  overflow: hidden;
+  position: relative;
+  
+}
+
+._4s7c{
+  border-color: $border-color!important;
+}
+
+.datepicker{
+  padding: 15px;
+  border: none;
+  z-index: 100 !important;
+}
+
+.buy-theme{
+  h3{
+    text-transform: uppercase;
+    color: $white;
+    margin: 0;
+  }
+  p{
+    color: $white;
+    margin: 0;
+  }
+}
+
+.background-theme{
+  background: $theme-color!important;
+}
+.text-intro{
+  .title{
+    font-weight: 700;
+    font-size: 18px;
+    position: relative;
+    padding-left: 55px;
+    font-family: $font-family-second;
+    color: $white;
+    min-height: 75px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    &:after{
+      content: "";
+      @include size(20px, 100%);
+      @include border-radius(20px);
+      background: $white;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+  .button-action{
+    padding-top: 15px;
+  }
+  &.dark{
+    .title{
+      color: $text-color;
+        &:after{
+          background: $text-color;
+        }
+    }
+  }
+}
+.contact-footer{
+  .contact-heading{
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-top: 15px;
+    margin-top: 15px!important;
+    position: relative;
+    &:after{
+      content: "";
+      width: 60px;
+      height: 1px;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.1);
+      position: absolute;
+    }
+    &:first-child{
+      padding-top: 0;
+      margin-top: 0!important;
+      &:after{
+        content: none;
+      }
+    }
+  }
+}  
+
+.row-mod-theme{
+  background: $theme-color!important;
+  position: relative;
+  padding: 100px 0 0;
+  .icon-row{
+    top: 30px!important;
+    background: url(#{$image-theme-skin}icon-row-mod.png) center center no-repeat $nocolor!important;
+  }
+  &:after{
+      content: "";
+      border: 12px solid $nocolor;
+      border-top-color: $theme-color;
+      position: absolute;
+      bottom: -24px;
+      margin-left: -12px;
+      left: 50%;
+  }
+  .widget-text-heading{
+    padding: 30px 0 0;
+    .widget-title {
+      position: relative;
+      padding-bottom: 15px;
+      &:after{
+        content: "";
+        height: 3px;
+        width: 90px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -45px;
+        background-color: $white;
+      }  
+      > span{
+        color: $white;
+        font-size: 30px;
+        padding: 0;
+        font-weight: 700;
+        &:after, &:before{
+          background: $white;
+          content: none;
+        }
+        &.visual-description{
+          font-size: 14px; 
+          font-weight: 400;
+          font-family: $font-family-second;
+        }
+      } 
+    } 
+  }   
+}

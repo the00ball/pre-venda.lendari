@@ -1,0 +1,61 @@
+// Widget title
+// -------------------------
+$widget-title-font-size        : 18px !default;
+
+// Widget Video
+// -------------------------
+$widget-video-name-line-height : 1.6667 !default;
+
+// Widget post
+// -------------------------
+$widget-post-meta-font-size    : 12px !default;
+$widget-post-margin            : ($theme-margin / 4) !default;
+
+// Widget twitter
+// -------------------------
+$widget-twitter-margin-bottom  : 40px !default;
+
+//Widget nav layered
+//--------------------------
+$layered-nav-font-size			: 14px !default;
+
+// Widget tags cloud
+// -------------------------
+$widget-tag-color              : #5d5d5d !default;
+$widget-tag-color-hover        : $white !default;
+$widget-tag-bg                 : $white !default;
+$widget-tag-bg-hover           : $theme-color !default;
+$widget-tag-font-size          : 14px !important;
+$widget-tag-padding            : 5px 10px !default;
+$widget-tag-margin             : 5px 3px !default;
+$widget-tag-border             : none !default;
+$widget-tag-border-color-hover : $widget-tag-bg-hover !default;
+$widget-tag-border-radius      : 0px !default;
+$widget-tag-transform          : uppercase !default;
+
+// Widget vertical menu
+// -------------------------
+$vertical-menu-padding:                       0px !default;
+$vertical-menu-bg-hover:                      $nocolor !default;
+$vertical-menu-line-height:                   25px !default;
+$vertical-menu-font-size:                     12px !default;
+$vertical-menu-icon-font-size:                14px !default;
+$vertical-menu-link-padding:                  13px 0 !default;
+$vertical-menu-bg:                            #fff !default;
+$vertical-menu-link-color:                    #666666 !default;
+$vertical-menu-link-font-weight:              300 !default;
+$vertical-menu-link-transform:				  uppercase !default;
+$vertical-menu-link-hover-color:              $theme-color !default;
+$vertical-menu-border:             			  none !default;
+$vertical-menu-link-border:             	  1px solid $border-color !default; 
+// Widget deals product
+// -------------------------
+$deals-times-padding:					  5px 0 !default;
+$deals-times-bg:						  $red !default; 
+$deals-times-color:						  #fff !default;   
+$deals-times-font-family:				  $font-family-base !default;  
+$deals-times-font-size:					  10px !default;
+
+// Widget gallery masonry
+// -------------------------
+$gallery-image:						       292px !default;

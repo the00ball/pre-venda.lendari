@@ -1,0 +1,10 @@
+
+.wpo-meta-tabs {margin: 17px 0 0;position: relative;z-index: 1;line-height: 20px;}
+.wpo-meta-tabs li {display: inline-block;margin: 0 5px 0 0;padding: 6px 12px;border: 1px solid #ddd;background: #f7f6f7;line-height: 20px;}
+.wpo-meta-tabs li a { text-decoration:none; padding: 5px;}
+.wpo-meta-tabs li.active {border-bottom: 1px solid #ffffff;background: #ffffff; }
+.wpo-meta-tabs li.active a {color:#333;}
+.wpo-meta-tabs li i {margin-right:5px;}
+
+.wpo-meta-content {display:none;border: 1px solid #ddd;position:relative;padding: 10px;line-height: 29px;background: #ffffff;margin-top: -1px;}
+.wpo-meta-content.active {display:block;}

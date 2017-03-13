@@ -1,0 +1,466 @@
+html{
+    overflow-x: hidden!important;
+}
+/*------------------------------------*\
+    Topbar
+\*------------------------------------*/
+.#{$app-prefix}-topbar{
+    .topbar-inner{
+        @include box-size($topbar-bg, $topbar-padding-top, $topbar-padding-bottom);
+        @include font-size(font-size, $topbar-font-size);
+        line-height: 40px;
+        color: $topbar-color;
+        a{
+            color: $topbar-link-color;
+            &:hover{
+                color: $topbar-link-hover-color;
+            }
+        }
+        ul{
+            @include clear-list();
+            li{
+                float: none;
+                display: inline;
+                text-transform: $topbar-text-transform;
+                @include rtl-margin(0, 5px, 0, 0);
+                &:last-child{
+                    a{
+                        @include rtl-margin-right(0);
+                    }
+                    @include rtl-margin-right(0);
+                }
+            }
+        }
+        .fa{
+            @include font-size(font-size,$topbar-icon-font-size);
+        }
+        .quick-button{
+            position: relative;
+            .heading{
+                text-transform: uppercase;
+                font-size: $topbar-font-size;
+                &:hover{
+                    cursor: pointer;
+                    color: $theme-color;
+                }
+                i{
+                    font-size: 10px;
+                }
+            }
+            ul{
+                background: $white;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: -15px;
+                min-width: 200px;
+                z-index: 9999;
+                @include box-shadow(0 1px 3px #999999);
+                li{
+                    width: 100%;
+                    display: block;
+                    padding: 2px 20px;
+                    border-bottom: 1px solid $border-color;
+                    a{
+                        text-transform: uppercase;
+                        color: #999;
+                        &:hover{
+                            color: $theme-color;
+                        }
+                    }
+                }
+            }
+            &:hover{
+                ul{
+                    display: block;
+                }
+            }
+        }
+        @media(max-width: $screen-sm-max){
+            background: #3C424C;
+            .setting-popup{
+                ul > li{
+                    width: 100%;
+                    display: block;
+                }
+            }    
+        }
+    } 
+} 
+
+
+/*------------------------------------*\
+    Header
+\*------------------------------------*/
+.#{$app-prefix}-header{
+    margin-bottom: $header-margin-bottom;
+    background: $header-bg;
+    position: relative;
+    z-index: 999;
+    .header-wrap{
+        text-align: $header-content-align;
+        .wpo-search{
+            max-width: 200px;
+            width: 200px;
+        }
+        .header-wrapper-inner{
+            padding-top: $header-padding-top;
+            padding-bottom: $header-padding-bottom;
+            .logo{
+                padding: $logo-padding;
+                @media(max-width: $screen-md-max){
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+    .wpo-mainmenu-wrap{
+        background: $theme-color;
+        #main-menu{
+            float: left;
+        }
+    }
+    .header-wrap{
+        top: -50px;
+    }
+    // Menu Fixed
+    .menu_fixed{ 
+        position: fixed;
+        top: 0;
+        z-index: 9999;
+        background: $white;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 100%;
+        @include transition(all .6s ease 0s);
+        .header-wrapper-inner{
+            display: none;
+        }
+    }
+    .mainmenu-content-wapper{
+        position: relative;
+        .mainmenu-content{
+            float: left;
+        }
+    }    
+    .btn-create-campaign{
+        float: right;
+        background: $text-color;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        z-index: 9;
+        i{
+            margin-right: 5px;
+        }
+        .user-campaign{
+            padding: 0 20px;
+            line-height: 57px;
+            color: $white;
+            color: $theme-color;
+            font-weight: 800;
+            font-size: 16px; 
+            text-transform: uppercase;
+            &:hover{
+                color: $white;
+            }
+        }
+    }  
+    &.wpo-header-v1{
+        .header-wrapper-inner{
+            padding: 15px 0;
+        }
+        .mainmenu-content{
+            position: relative;
+        }
+    }
+    &.wpo-header-absolute{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: $nocolor;
+        @media(max-width: $screen-sm-max){
+            position: static!important;
+            background: $header-bg!important;
+        }
+        .header-wrapper-inner{
+            padding: 40px 0;           
+        }
+        .btn-create-campaign{
+            background: $black;
+        }
+        .wpo-mainmenu-wrap{
+            background: $nocolor;
+            .mainmenu-content-wapper{
+                background: $theme-color;
+                display: table;
+                width: 100%;
+                .navbar-collapse{
+                    padding: 0;
+                }
+            }
+        }
+        .wp-topmenu{
+            ul#main-topmenu{
+                > li a{
+                    color: $white;
+                    &:hover{
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+        ul#main-menu{
+            > li{
+                &.active{
+                    background: $black;
+                    > a{
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+        .menu_fixed{ 
+            position: fixed;
+            top: 0;
+            z-index: 9999;
+            background: $white;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 100%;
+            @include transition(all 0.6s ease 0s);
+            .mainmenu-content-wapper, .wpo-mainmenu-wrap{
+                background: #54575A;
+                margin: 0;
+            }
+            .btn-create-campaign{
+                background: $theme-color;
+                a{
+                    color: $text-color;
+                    &:hover{
+                        color: $white;
+                    }
+                }
+            }
+            .header-wrapper-inner{
+                display: none;
+            }
+        }
+    } 
+    &.wpo-header-v3{
+        background: transparent;
+        position: absolute;
+        width: 100%;
+        margin-top: 30px;
+        @media(max-width: $screen-sm-max){
+            position: static!important;
+            background: #A1A1A1;
+            margin-top: 0;
+            padding-bottom: 20px;
+        }
+        #main-menu {
+            > li{
+                a:before{ 
+                    content: none;
+                }
+                &.active{
+                    background: $nocolor;
+                    > a:after{
+                        content: none;
+                    }
+                }
+            }
+        }
+    }  
+    &.wpo-header-v4{
+        background: $black;
+        width: 100%;
+        padding: 30px 0 15px;
+        .logo{
+            padding: 0;
+            text-align: left;
+            @media(max-width: $screen-sm-max){
+                text-align: center;
+            }
+        }
+        #main-menu {
+            > li{
+                float: left;
+                a:before{ 
+                    content: none;
+                }
+                &.active{
+                    background: $nocolor;
+                    > a:after{
+                        content: none;
+                    }
+                }
+            } 
+        }
+    } 
+}
+ 
+/*------------------------------------*\
+    Breadcrumb
+\*------------------------------------*/
+.#{$app-prefix}-breadcrumb{
+    @include box-size($breadcrumb-layout-bg, $breadcrumb-padding-top, $breadcrumb-padding-bottom);
+    @include border-radius(0);
+    margin: $breadcrumb-margin;
+    text-align: $breadcrumb-alignment;
+    color: $breadcrumb-color;
+    font-size: 12px;
+    font-weight: 800;
+    background: #F0F0F0;
+    text-transform: uppercase;
+    .breadcrumb-title{
+        color: $breadcrumb-color;
+        margin: 0;
+        font-weight: $breadcrumb-title-font-weight;
+        @include font-size(font-size, $breadcrumb-title-font-size);
+    }
+    nav{
+        text-align: right;
+        line-height: $breadcrumb-line-height;
+        a{
+            color: $breadcrumb-link-color;
+            font-size: 12px;
+            text-transform: uppercase;
+            &:hover{
+                text-decoration: underline;
+            }
+        } 
+    }
+    .breadcrumb-name{
+        float: left;
+        @include font-size(font-size, $breadcrumb-name-font-size);
+        color: $breadcrumb-name-color;
+        text-transform: uppercase;
+        font-weight: $breadcrumb-name-font-weight;
+    }
+}
+
+/*------------------------------------*\
+    Slideshow
+\*------------------------------------*/
+.#{$app-prefix}-slideshow{
+
+}
+
+/*------------------------------------*\
+    Container
+\*------------------------------------*/
+.#{$app-prefix}-mainbody{
+    @include box-size($container-bg, $container-padding-top, $container-padding-bottom);
+    position: relative;
+}
+
+/*------------------------------------*\
+    Content
+\*------------------------------------*/ 
+##{$app-prefix}-content{
+    background: $content-bg;  
+    margin-bottom: 30px;
+    @include clearfix(); 
+} 
+
+/*------------------------------------*\
+    Pagination
+\*------------------------------------*/
+.#{$app-prefix}-pagination{
+    margin: 0;
+}
+
+/*------------------------------------*\
+    Footer
+\*------------------------------------*/
+
+.#{$app-prefix}-footer{
+    @include box-size($footer-bg, $footer-padding-top, $footer-padding-bottom);
+    position: relative;
+    color: $footer-color;
+    border-bottom: $footer-border;
+    font-size: $footer-font-size;
+    a{
+        font-size: $footer-link-font-size;
+        color: $footer-link-color;
+        font-weight: 400;
+        &:hover,
+        &:focus,
+        &:active{
+            color: $footer-link-hover-color;
+        }
+    }
+    ul.menu{
+        margin-top: -8px!important;
+    }
+    .footer-top{
+        border-top: 1px solid $footer-top-border-color;
+        @include box-size($footer-top-bg, $footer-top-padding-top, $footer-top-padding-bottom);
+        line-height: 60px;
+        color: $footer-top-color;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: $footer-top-font-size;
+        letter-spacing: $footer-top-letter-spacing;
+        .footer-logo{
+            margin-right: 20px;
+            padding-right: 20px;
+            border-right: 1px solid $footer-top-border-color;
+        }
+        .widget{
+            margin: 0!important;
+        }
+    }
+    .wpb_wrapper > *, .wpb-inner{
+        margin-bottom: 0!important;
+    }
+} 
+
+/*------------------------------------*\
+    Copyright
+\*------------------------------------*/
+.#{$app-prefix}-copyright{
+    text-align: left;
+    background: $copyright-bg;
+    color: $copyright-color;
+    font-size: $copyright-font-size;
+    font-weight: $copyright-font-weight;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+    border-bottom: 6px solid $theme-color;
+    @include box-size($copyright-bg, $copyright-padding-top, $copyright-padding-bottom);
+    .#{$block-selector} {
+        .#{$block-heading-selector}{
+            color: $footer-heading-color;
+            text-transform: $footer-heading-transform;
+            margin: $footer-heading-margin;
+            @include font-size(font-size,$footer-heading-font-size);
+        }
+    }
+    .input-group{
+        border: 0px;
+        .fa{
+            color: $gray-light;
+        }
+    }
+    a{
+        &:hover,
+        &:focus,
+        &:active{
+            color: $theme-color;
+        }
+        color: $copyright-link-color;
+    }
+    address{ 
+        margin: 0;
+    }
+    .payment{
+        padding-top: 30px;
+    }
+}

@@ -1,0 +1,18 @@
+//------------------- Campaign ------------------
+//-----------------------------------------------
+$campaign-funded-font-size: 12px !default;
+$campaign-funded-margin: 3rem 0 0 -6rem !default;
+$campaign-funded-padding: 0.6rem 0 !default;
+$campaign-funded-width: 20rem !default;
+$campaign-funded-height: auto !default;
+
+$campaign-funded-successful-bg: $theme-color !default;
+$campaign-funded-successful-color: #444444 !default;
+
+$campaign-funded-unsuccessful-bg: #E4E4E4 !default;
+$campaign-funded-unsuccessful-color: #969696 !default;
+
+//----------------- Event -------------------------
+//-------------------------------------------------
+$event-label-form-font-size: 14px;
+$event-label-form-font-weight: 700;

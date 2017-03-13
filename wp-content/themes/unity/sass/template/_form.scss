@@ -1,0 +1,258 @@
+/*
+*  Form
+*/
+/* Button
+------------------------------------------------*/
+.btn-outline{
+	@include button-outline($btn-outline-color, $btn-outline-bg, $btn-outline-border, $btn-outline-hover-bg, $btn-outline-hover-color, $btn-outline-border-hover, $btn-outline-border-radius);
+	@include state-hover-default(.3s, $btn-outline-hover-bg, $btn-outline-hover-bg);
+}
+.btn-outline-lg{
+	@include button-size($btn-outline-lg-padding-vertical,$btn-outline-lg-padding-horizontal,$btn-outline-lg-font-size,$btn-outline-lg-line-height,$btn-outline-lg-border-radius);
+}
+.btn-outline-sm {
+	@include button-size($btn-outline-sm-padding-vertical, $btn-outline-sm-padding-horizontal, $btn-outline-sm-font-size, $btn-outline-sm-line-height, $btn-outline-sm-border-radius);
+}
+.btn-outline-xs{
+	@include button-size($btn-outline-xs-padding-vertical, $btn-outline-xs-padding-horizontal, $btn-outline-xs-font-size, $btn-outline-xs-line-height, $btn-outline-xs-border-radius);
+}
+.btn-outline-inverse{
+	@include button-outline($btn-outline-inverse-color, $btn-outline-inverse-bg, $btn-outline-inverse-border-color, $btn-outline-inverse-hover-bg, $btn-outline-inverse-hover-color, $btn-outline-inverse-border-hover-color, $btn-outline-inverse-border-radius);
+	@include state-hover-default(.3s, $btn-outline-inverse-hover-bg, $white);
+}
+.btn-inverse{
+	@include button-outline($btn-inverse-color, $btn-inverse-bg, $btn-inverse-border-color, $btn-inverse-hover-bg, $btn-inverse-hover-color, $btn-inverse-border-hover-color, $btn-inverse-border-radius);
+	@include state-hover-default(.3s, $btn-outline-inverse-hover-bg, $btn-outline-inverse-hover-bg);
+}
+
+.btn-slide{
+		padding: $btn-slide-padding;
+		color: $white;
+		height: $btn-slide-height;
+		line-height: 1;
+		font-size: $btn-slide-font-size;
+		font-weight: 700;
+		text-transform: uppercase;
+		border: 1px solid $white;
+		@include transition(background-color 0.35s);
+		background: none;
+		&:hover{
+			background-color: $theme-color;
+			border-color: $theme-color;
+		}
+	}
+
+.btn-donate{
+    @include border-radius(0);
+    border: 1px solid $btn-donate-border-color;
+    color: $btn-donate-color;
+    background: $btn-donate-background;
+    padding: $btn-donate-padding;
+    text-align: center;
+    @include border-radius($btn-donate-border-radius);
+    &:hover{
+    	background: $btn-donate-hover-background;
+    	border-color: $btn-donate-hover-border-color;
+    	color: $btn-donate-hover-color;
+    }
+}
+
+.btn-donate-black{
+    background-color: $theme-color-second;
+    font-size: 18px;
+    color: $theme-color;
+    text-transform: uppercase;
+    @include border-radius(0);
+    padding: 5px 20px;
+    width: 100%;
+    &:hover{
+        color: $white;
+    }
+}
+
+.btn-newsletter{
+	background: $theme-color-second;
+	@include border-radius(0);
+	font-size: 14px;
+	font-weight: 800;
+	padding: 0 15px;
+	color: $theme-color;
+	margin-top: 15px;
+}
+
+.btn-cart a{
+	@include border-radius(4px);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 30px;
+    margin-bottom: 0;
+    padding: 0px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    @include transition(all 0.4s ease 0s);
+    vertical-align: middle;
+    white-space: nowrap;
+    color: $white;
+    background: $btn-outline-inverse-bg;
+    border: 1px solid  $btn-outline-inverse-bg;
+    &:hover{
+    	background: $nocolor;
+    	border-color: $white;
+    }
+}
+/* Search
+------------------------------------------------*/
+.search-from{
+
+}
+
+.btn-action{
+	@include border-radius(4px);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 30px;
+    margin-bottom: 0;
+    padding: 0px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    @include transition(all 0.4s ease 0s);
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.shopcol.col-md-3 .btn-action{
+	padding: 0px 6px;
+}
+.wpo-search{
+	@include rtl-text-align-left();
+	@include border-radius($search-border-radius);
+	padding-top: 15px;
+	overflow: hidden; 
+	.input-search{
+		border: 0;
+		padding: $search-padding;
+		background: $search-bg;
+		@include font-size(font-size,$search-font-size);
+		height: $search-height;
+		@include border-radius($search-radius);
+		@include placeholder($text-color);
+		&:hover,&:focus{
+			@include box-shadow(none);
+		}
+	}
+	.fa{
+		border: 0;
+		padding: 0;
+		color: $search-main-button-color;
+		background: none transparent;
+		@include rotate(80deg);
+	}
+	.btn-search{
+		cursor: pointer;
+		background: $search-main-button-bg;
+		border: $search-button-border;
+		@include border-radius(0);
+	}
+}
+
+// Search categories
+.search-category{
+	.search-category-container{
+		padding: 0;
+		background: $white;
+
+	}
+	.select{
+		border: 0;
+		margin: 0;
+		background: $white;
+		select{
+			padding: 6px;
+			&:hover,
+			&:focus{
+				outline-style: none;
+			}
+		}
+	}
+	.btn-search{
+		padding: 0 5px;
+		line-height: 3;
+		background: $white;
+		@include border-right-radius($search-categories-border-radius);
+		@include border(1px 1px 1px 0px, $search-main-button-border, solid);
+		&:hover{
+			@include border(1px 1px 1px 0px, $search-main-button-border, solid);
+		}
+		.searchsubmit{
+			border: 0;
+			background: transparent;
+		}
+	}
+	.search-category-input{
+		height: 38px;
+		border-right: 0;
+	}
+}
+
+/* comment form
+------------------------------------------------*/
+
+/* Select, Input
+------------------------------------------------*/
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea,select{
+	padding: $input-padding;
+}
+
+.chosen-container{
+	width: 100% !important;
+}
+
+.input-group-form{
+	@include border-radius(3px);
+	background: $input-group-form-bg;
+	margin: $input-group-form-margin;
+	.form-control-reversed{
+		border: 0px;
+		background: $input-form-bg;
+		color: darken($white, 20%);
+	    @include font-size(font-size,14px);
+	    height: 34px;
+	    &:hover,
+	    &:focus{
+	        @include box-shadow(none);
+	    }
+	}
+	.input-group-addon{
+        border: 0;
+        background: $input-form-bg;
+        @include border-left-radius(4px);
+    }
+}
+
+.select{
+	overflow: hidden;
+	width: 180px;
+	cursor: pointer;
+	margin: 0;
+	font-weight: $font-weight-base;
+	border: 1px solid $border-color;
+	select{
+		@include appearance();
+		width:200px;
+		border: 0;
+		cursor: pointer;
+		background: transparent url("#{$image-theme-path}arrow.png") no-repeat 85% center;
+		&:hover,&:focus{
+			outline: none !important;
+			@include box-shadow(none);
+		}
+	}
+}
+

@@ -1,0 +1,179 @@
+/*
+*  Revolution Slider
+*/
+.slide-full{
+	margin-left:  (- $grid-gutter-width + 10);
+	margin-right:  (- $grid-gutter-width + 10);
+}
+
+.wpb_revslider_element{
+	overflow: hidden;
+	&:hover{
+		.tparrows{
+			visibility: visible;
+			@include opacity(1);
+		}
+		.tp-leftarrow{
+			@include rtl-margin-left(0px);
+		}
+		.tp-rightarrow{
+			@include rtl-margin-right(0px);
+		}
+	}
+	.tp-bullets
+	{
+		bottom: 80px!important;
+		&.simplebullets.round .bullet{
+			background-image: none;
+			background-color: $white;
+			border: none;
+			@include transition(all .5s ease-out);
+			@include box-shadow(none);
+			@include text-shadow(none);
+			@include square(12px);
+			@include border-radius(50%);
+			margin: 0 10px;
+			&.selected{
+				background: $theme-color;
+			}
+		}
+	}
+	.no-slides-text{
+		padding: 50px 0px;
+	}
+}
+
+.tp-caption{
+	&.text-white{
+		@include font-size(font-size, 60px);
+		color: $white;
+		font-family: $font-family-base;
+		font-weight: 800;
+		text-transform: uppercase;
+		line-height: 60px!important;
+	}
+	&.text-white-medium{
+		@include font-size(font-size, 60px);
+		color: $white;
+		text-transform: uppercase;
+		font-weight: 300;
+		font-family: $font-family-base;
+	}
+	&.overlay{
+		display: block;
+		z-index: 1 !important;
+		text-indent: -9999px;
+		background: transparentize($black, .5);
+		@include size(960px, 227px);
+	}
+
+	//-------- Sider 2 ------------
+	&.skin-2.text-white{
+		@include font-size(font-size, 50px);
+		color: $white;
+		font-family: $font-family-second;
+		font-weight: 800;
+		text-transform: none;
+		line-height: 50px!important;
+		text-align: center;
+		line-height: 55px;
+	}
+	&.skin-2.text-white-medium{
+		@include font-size(font-size, 47px);
+		color: rgba(255, 255, 255, 1);
+		line-height: 1;
+		text-transform: none;
+		font-weight: 300;
+		font-family: $font-family-base;
+		text-align: center;
+	}
+
+	//-------- Sider 3 ------------
+	&.skin-3.text-white{
+		@include font-size(font-size, 47px);
+		color: $white;
+		font-family: $font-family-second;
+		font-weight: 800;
+		text-transform: none;
+		line-height: 60px!important;
+		text-align: center;
+		line-height: 55px;
+	}
+	&.skin-3.text-white-medium{
+		@include font-size(font-size, 25px);
+		color: rgba(255, 255, 255, 0.8);
+		line-height: 1;
+		text-transform: none;
+		font-weight: 700;
+		font-family: $font-family-base;
+		text-align: center;
+	}
+	&.skin-3.btn-slide{
+		
+	}
+	//-------- Sider 4 ------------
+	&.skin-4.text-white{
+		@include font-size(font-size, 47px);
+		color: $white;
+		font-family: $font-family-second;
+		font-weight: 700;
+		text-transform: uppercase;
+		line-height: 60px!important;
+		text-align: left;
+		line-height: 55px;
+	}
+	&.skin-4.text-white-medium{
+		@include font-size(font-size, 25px);
+		color: rgba(255, 255, 255, 0.8);
+		line-height: 1;
+		text-transform: none;
+		font-weight: 400;
+		font-family: $font-family-base;
+		text-align: left;
+	}
+	&.black{
+		color: $black!important;
+		border-color: $black;
+	}
+}
+
+.tparrows{
+	&.default{
+		top: 46%;
+		color: $white;
+		background-image: none;
+		position: relative;
+		visibility: hidden;
+		background-color: rgba($black, 0.25);
+		@include opacity(0);
+		@include size(32px, 50px);
+		@include transition(all .5s ease-in);
+		&:before{
+			content: "\f105";
+			font-family: $theme-font-name;
+			margin: auto;
+			display: block;
+    		color: $white;
+    		font-weight: bold;
+    		@include font-size(font-size, 15px);
+    		@include vertical-center(4px, 25px);
+		}
+	}
+	&.tp-leftarrow{
+		@include rtl-margin-left(-52px);
+		&:before{
+			content: "\f104";
+		}
+	}
+	&.tp-rightarrow{
+		@include rtl-margin-right(-52px);
+	}
+	&:hover{
+		background-color: rgba($theme-color, .8);
+		&:before{
+			color: $white;
+		}
+	}
+	@include state-hover(.5s,50px, rgba($theme-color, .8));
+}
+

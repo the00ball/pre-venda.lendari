@@ -1,0 +1,104 @@
+/**
+* $Desc
+*
+* @version    $Id$
+* @package    wpbase
+* @author     WPOpal  Team <wpopal@gmail.com, support@wpopal.com>
+* @copyright  Copyright (C) 2014 wpopal.com. All Rights Reserved.
+* @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+*
+* @website  http://www.wpopal.com
+* @support  http://www.wpopal.com/support/forum.html
+*/
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. Utilities
+2. Base
+3. Layout
+4. Page
+5. Post
+6. Slideshow
+7. Form
+8. Responsive
+9. Widget
+
+-------------------------------------------------------------------*/
+
+//@import "compass";
+@import "../../vars/vars-global";
+
+@import "vars/variables";
+
+@import "../../vars/template-vars";
+
+@import "vars/variables-wordpress";
+
+@import "../../vars/var_campaigns_events";
+
+@import "vars/var_campaigns_events"; 
+
+/* 1. Utilities */
+@import "../../mixins/mixins";
+
+@import "../../mixins/template-mixins";
+ 
+@import "mixins/mixins";
+
+@import "../../rtl/rtl";
+
+/* 2. Font */
+@import "addition/font";
+
+/* 3. Base */
+@import "../../template/base";
+
+/* 4. Layout */
+@import "../../template/layout";
+
+/* 5. Layout */
+@import "../../template/pages";
+
+/* 6. Post */
+@import "../../template/post";
+
+@import "addition/post";
+
+/* 10. Widget */
+@import "addition/widgets-layout";
+
+@import "../../template/widgets";
+
+@import "../../template/shortcodes";
+
+@import "../../template/offcanvas";
+
+@import "../../template/menu";
+
+/* 8. Form */
+@import "../../bootstrap/buttons";
+
+@import "../../template/form";
+
+@import "../../template/style";
+
+@import "../../template/utilities";
+
+@import "../../template/visual-composer";
+
+/* 7. Slideshow */
+@import "../../template/slider";
+
+/* 9. Responsive */
+@import "../../template/responsive";
+
+@import "../../template/theme-effect";
+
+@import "../../template/editor-style";
+
+@import "addition/style";
+
+@import "../../template/campaign";
+
+@import "../../template/event";

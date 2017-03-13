@@ -1,0 +1,72 @@
+/*
+Theme Name: Unity
+Theme URI: http://bit.ly/opalwp
+Author: the WPOpal team
+Author URI: http://bit.ly/opalwp
+Description: The Unity theme for WordPress by <a href="http://bit.ly/opalwp">OpalTeam</a>is a fully responsive theme that looks great on any device. That's the best for any kind of crowdfunding online sites. <a href="http://bit.ly/opalwp">Follow us on Themeforest to receive newest updates</a>
+Version: 1.7 Updated 8-Feb-2016
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready
+Text Domain: Unity
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+.wp-caption{}
+
+.wp-caption-text{}
+
+.sticky{}
+
+.gallery-caption{}
+
+.bypostauthor{}
+
+.alignright{}
+
+.alignleft{}
+
+.aligncenter{}
+
+.active-mobile:hover .active-content{
+    opacity: 0;
+    filter: alpha(opacity=0);
+    display: none!important;
+}
+.active-mobile > a span{
+   display: block;
+   font-size: 24px!important;
+   padding-top: 20px;
+}
+.active-mobile > a{
+   width: 60px;
+   height: 60px;
+   display: block;
+}
+.active-mobile.open .active-content{
+   display: block!important;
+   visibility: visible; 
+   left: auto!important;
+   opacity: 1;
+   filter: alpha(opacity=100);
+}
+
+.single.single-download .entry-description form{
+   margin-top: 60px;
+} 
+
+.edit-single-campaign p, .edit-single-campaign h3 {
+   width: 100%;
+   float: left;
+}
+
+.atcf-submit-campaign-rewards > div{
+   width: 100%;
+   float: left;
+}
+
+.edit-single-campaign .mce-edit-area{
+   border: 1px solid #E5E5E5!important;
+}

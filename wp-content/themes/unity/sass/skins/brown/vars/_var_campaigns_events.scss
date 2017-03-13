@@ -1,0 +1,12 @@
+//------------------- Campaign ------------------
+//-----------------------------------------------
+$campaign-funded-font-size: 12px;
+$campaign-funded-margin: 2.1rem 0 0 -6rem;
+$campaign-funded-padding: 1rem 0;
+$campaign-funded-width: 20rem;
+$campaign-funded-height: 40px;
+$campaign-funded-successful-bg: url(#{$image-theme-skin}campaign-successful.png) no-repeat center center $nocolor !important;
+$campaign-funded-successful-color: $white;
+
+$campaign-funded-unsuccessful-bg: url(#{$image-theme-skin}campaign-unsuccessful.png) no-repeat center center $nocolor !important;
+$campaign-funded-unsuccessful-color: $white; 
