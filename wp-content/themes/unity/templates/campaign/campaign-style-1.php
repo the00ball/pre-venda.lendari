@@ -38,15 +38,15 @@ $uid = wpo_makeid();
 		<div class="campaign-main">
 			<ul class="campaign-status text-center">
 				<li class="campaign-raised">
-					<span class="label"><?php _e( 'Current','unity' ) ?></span>
-					<span class="text"><?php echo esc_html( $campaign->current_amount() ); ?></span>
+					<span class="label"><?php _e( 'Days left','unity' ) ?></span>
+					<span class="text"><?php echo trim( $campaign->days_remaining() ); ?></span>
 				</li>
 				<li class="campaign-funded">
 					<span class="funded"><?php echo esc_html( $campaign->percent_completed(false) );?>%</span>
 				</li>
 				<li class="campaign-backers">
-					<span class="label"><?php _e( 'Backers','unity' ) ?></span>
-					<span class="text"><?php echo esc_html( $campaign->backers_count() ); ?></span>
+					<span class="label"><?php _e( 'Expires','unity' ) ?></span>
+					<span class="text"><?php echo esc_html( $campaign->date_goal() ); ?></span>
 				</li>
 			</ul>
 		</div>
@@ -80,11 +80,11 @@ $uid = wpo_makeid();
 
 								<li class="campaign-raised">
 									<p class="label"><?php _e( 'Current','unity' ) ?></p>
-									<p class="text"><?php echo esc_html( $campaign->current_amount() ); ?></p>
+									<p class="text"><?php echo trim( $campaign->days_remaining() ); ?></p>
 								</li>
 								<li class="campaign-goal">
 									<p class="label"><?php _e( 'Target','unity' ) ?></p>
-									<p class="text"><?php echo esc_html( $campaign->goal() ); ?></p>
+									<p class="text"><?php echo esc_html( $campaign->date_goal() ); ?></p>
 								</li>
 								<li class="campaign-backers hidden">
 									<p class="label"><?php _e( 'Backers','unity' ) ?></p>
