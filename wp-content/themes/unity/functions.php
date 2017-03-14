@@ -122,7 +122,12 @@ $wpoEngine->init();
 
 /**
  *
- */	
-global $wpopconfig; 
+ */
+global $wpopconfig;
 
 $wpoconfig = is_single()?  $wpoEngine->configLayout(wpo_theme_options('single-layout','0-1-0')):$wpoEngine->getPageConfig();
+
+
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+@ini_set( 'max_execution_time', '300' );
