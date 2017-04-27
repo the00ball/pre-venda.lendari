@@ -14,7 +14,7 @@
 
 if( !defined('unity') ){
 
-	$themename = get_option( 'stylesheet' ); 
+	$themename = get_option( 'stylesheet' );
 	$themename = preg_replace("/\W/", "_", strtolower($themename) );
 	define( 'unity', $themename );
 }
@@ -35,18 +35,18 @@ define( 'WPO_EVENT_ACTIVED', in_array( 'the-events-calendar/the-events-calendar.
 
 /*
  * Include list of files from Opal Framework.
- */ 
+ */
 require_once( WPO_THEME_DIR . '/inc/loader.php' );
-/* 
+/*
  * Localization
- */ 
+ */
 $lang = WPO_THEME_DIR . '/languages' ;
 load_theme_textdomain( 'unity', get_template_directory() . '/languages' );
 
 /**
  * Create variant objects to modify and proccess actions of only theme.
  */
- 
+
 /*
  * Shortcodes
  */
@@ -62,7 +62,7 @@ require_once( WPO_THEME_SUB_DIR . 'functions/theme.php' );
 
 /**
  * Create variant objects to modify and proccess actions of only theme.
- */  
+ */
 if( WPO_VISUAL_COMPOSER_ACTIVED ){
 	require_once( WPO_THEME_SUB_DIR . 'vc/visualcomposer.php' );
 	$path = WPO_THEME_SUB_DIR . '/vc/class/*.php';
@@ -74,7 +74,7 @@ if( WPO_VISUAL_COMPOSER_ACTIVED ){
 	}
 }
 
-	
+
 	require_once( WPO_THEME_SUB_DIR . 'customizer/customizer-custom-classes.php' );
 	require_once( WPO_THEME_SUB_DIR . 'customizer/theme.php' );
 	require_once( WPO_THEME_SUB_DIR . 'customizer/blog.php' );
@@ -94,7 +94,7 @@ if( WPO_WOOCOMMERCE_ACTIVED  ) {
 }
 
 if (WPO_CROWDFUNDING_ACTIVED) {
-    require_once( WPO_THEME_SUB_DIR . 'functions/campaign.php' );    
+    require_once( WPO_THEME_SUB_DIR . 'functions/campaign.php' );
     require_once( WPO_THEME_SUB_DIR . 'customizer/campaign.php' );
 }
 
@@ -105,7 +105,7 @@ if(WPO_EVENT_ACTIVED){
 
 /**
  * Startup theme application
- *  
+ *
  */
 $wpoEngine = new WPO_Frontend();
 $protocol = is_ssl() ? 'https:' : 'http:';
@@ -127,6 +127,16 @@ global $wpopconfig;
 
 $wpoconfig = is_single()?  $wpoEngine->configLayout(wpo_theme_options('single-layout','0-1-0')):$wpoEngine->getPageConfig();
 
+/**
+ * JQuery UI
+ */
+
+function add_jquery_ui() {
+  wp_enqueue_style ('jquery-ui', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');    
+  wp_enqueue_script('jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/jquery-ui.min.js', array( 'jquery' ));
+  wp_enqueue_script('jquery.maskedit', get_bloginfo('template_url') . '/js/jquery.maskedinput.min.js', array( 'jquery' ));
+}
+add_action( 'init', 'add_jquery_ui' );
 
 @ini_set( 'upload_max_size' , '64M' );
 @ini_set( 'post_max_size', '64M');
