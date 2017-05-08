@@ -1,28 +1,192 @@
 <?php
 
-function main_flow_associado() {
+// Actions List
+
+define("ACT_SHOW_NEW_FORM", "new");
+define("ACT_SHOW_UPD_FORM", "update");
+define("ACT_UPDATE_RECORD", "update_record");
+define("ACT_INSERT_RECORD", "insert_record");
+
+// Pagseguro URL
+
+define("PAGSEGURO_URL", "https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code=");
+
+// Pagseguro Status
+
+define("ST_PENDENTE",   0);
+define("ST_AGUARDANDO", 1);
+define("ST_EM_ANALISE", 2);
+define("ST_PAGA",       3);
+define("ST_DISPONIVEL", 4);
+define("ST_EM_DISPUTA", 5);
+define("ST_DEVOLVIDA",  6);
+define("ST_CANCELADA",  7);
+
+// Main flow
+
+function main_associado($action) {
+
+  switch ($action) {
+    case ACT_SHOW_UPD_FORM:
+      update_flow_associado();
+      break;
+    case ACT_INSERT_RECORD:
+      add_associado();
+      break;
+    case ACT_UPDATE_RECORD:
+      update_associado();
+      break;
+    default:
+      default_flow_associado();
+      break;
+  }
+}
+
+function update_flow_associado() {
+
+  global $wpdb;
+
+  $current_user = wp_get_current_user();
+  $associate = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM sa_usuarios WHERE `ID` = %d", $current_user->ID ) );
+
+  if ($associate !== null) {
+    show_form_associado(ACT_UPDATE_RECORD, $associate);
+  } else {
+    wp_redirect("associado");
+    exit;
+  }
+}
+
+function default_flow_associado() {
   global $wpdb;
 
   // Check if the current user is an associate
 
   $current_user = wp_get_current_user();
-
   $associate = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM sa_usuarios WHERE `ID` = %d", $current_user->ID ) );
 
   if ($associate !== null) {
-    echo "Listagem do financeiro";
+    show_finance_list_associado($associate);
   } else {
     //$user_email = esc_html( $current_user->user_email );
     $user_email = "sanchotene@embaubapaisagismo.com.br"; // just for test purposes
     $associate = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM sa_usuarios WHERE `email` = %s", $user_email ) );
 
     if ($associate === null) {
-      show_form_associado("new");
+      show_form_associado(ACT_INSERT_RECORD);
     } else {
-      show_form_associado("update", $associate);
+      show_form_associado(ACT_UPDATE_RECORD, $associate);
     }
   }
 }
+
+// Show finance List
+
+function show_finance_list_associado($associate) {
+
+  global $wpdb;
+
+  get_header();
+
+  $sql  = "SELECT date_format(str_to_date(p.`date`, '%Y-%m-%d'), '%d/%m/%Y') as date,";
+  $sql .= "p.notificationCode, p.item_description, p.type, ";
+  $sql .= "format(p.item_amount, 2, 'pt_BR') as item_amount, p.status, ";
+  $sql .= "coalesce(st.significado, 'Pendente') as significado, coalesce(st.detalhe, 'Aguardando pagamento') as detalhe ";
+  $sql .= "FROM sa_pagseguro p LEFT JOIN sa_statusTransacoes st ON (p.status = st.cod) WHERE ";
+  $sql .= "p.`idCliente` = ".esc_html( $associate->id_usuarios ). " AND ";
+  $sql .= "str_to_date(p.`date`, '%Y-%m-%d') <> '0000-00-00' ";
+  $sql .= "ORDER BY str_to_date(p.`date`, '%Y-%m-%d') DESC";
+
+  $payments = $wpdb->get_results( $sql );
+?>
+  <script>
+    jQuery(document).ready(function() {
+      jQuery('#example').DataTable();
+      jQuery('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h2><?php echo esc_html($associate->nome); ?></h2>
+        </div>
+        <div class="dropdown navbar-right">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Opções
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="associado?action=<?php echo ACT_SHOW_UPD_FORM; ?>">Atualizar Cadastro</a></li>
+            <!--li role="separator" class="divider"></li-->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Financeiro - Anuidades</h3></div>
+    <div class="panel-body">
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Data</th>
+          <th>Descrição</th>
+          <th>Valor (R$)</th>
+          <th>...</th>
+      </tr>
+      </thead>
+      <!--tfoot>
+        <tr>
+          <th>Data</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th>Status</th>
+        </tr>
+      </tfoot-->
+      <tbody>
+      <?php
+        if ($payments !== null) {
+          foreach ($payments as $payment) {
+            echo "<tr>";
+            echo "<th class='col-md-1'><a href='#' data-toggle='tooltip' title='".esc_html( $payment->detalhe )."'>".esc_html( $payment->significado )."</a></th>";
+            echo "<th class='col-md-1'>".esc_html( $payment->date )."</th>";
+            echo "<th>".esc_html( $payment->item_description )."</th>";
+            echo "<th class='col-md-2'><label class='float-right'>".esc_html( $payment->item_amount )."</label></th>";
+            echo "<th class='col-md-1'>";
+
+            switch ($payment->status) {
+              case ST_PENDENTE:
+              case ST_AGUARDANDO:
+              case ST_EM_ANALISE:
+                echo "<a class='float-right' href='".PAGSEGURO_URL.$payment->notificationCode."'><img src='".get_template_directory_uri()."/images/84x35-pagar.gif'/></a></th>";
+                break;
+              case ST_PAGA:
+              case ST_DISPONIVEL:
+                echo "<img src='".get_template_directory_uri()."/images/pag_status_ok.png'/></th>";
+                break;
+              case ST_EM_DISPUTA:
+              case ST_DEVOLVIDA:
+                echo "<img src='".get_template_directory_uri()."/images/pag_status_devolvida.png'/></th>";
+              case ST_CANCELADA:
+                echo "<img src='".get_template_directory_uri()."/images/pag_status_cancel.png'/></th>";
+                break;
+              default:
+                break;
+            }
+            echo "</tr>";
+          }
+        }
+      ?>
+      </tbody>
+    </table>
+  </div></div></div>
+<?php
+  get_footer();
+}
+
+// Add a new associate to the database
 
 function add_associado() {
   global $wpdb;
@@ -107,9 +271,12 @@ function add_associado() {
     show_form_associado($action, $associate, true);
 
   } else {
-    echo "No error. You can check updated to see how many rows were changed.";
+      wp_redirect("associado");
+      exit;
   }
 }
+
+// Update the current associate
 
 function update_associado() {
   global $wpdb;
@@ -192,11 +359,13 @@ function update_associado() {
     show_form_associado($action, $associate, true);
 
   } else {
-    echo "No error. You can check updated to see how many rows were changed.";
+    wp_redirect("associado");
+    exit;
   }
 }
 
 function show_form_associado($action, $associate = null, $show_info_error = false) {
+  get_header();
 ?>
   <div class="container">
   <form class="form-horizontal" id="form-associado" name="form-associado" method="post">
@@ -429,22 +598,25 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
   </div>
 
   <script>
-    // Format fields
+    jQuery(document).ready(function() {
+      // Format fields
 
-    jQuery("#nascimento").datepicker({ dateFormat: 'dd/mm/yy' });
-    jQuery("#res").mask("(99) 9999-9999");
-    jQuery("#cel").mask("(99) 9999-9999");
-    jQuery("#cep").mask("99999-999");
+      jQuery("#nascimento").datepicker({ dateFormat: 'dd/mm/yy' });
+      jQuery("#res").mask("(99) 9999-9999");
+      jQuery("#cel").mask("(99) 9999-9999");
+      jQuery("#cep").mask("99999-999");
 
-    // Form button click
+      // Form button click
 
-    jQuery("#confirmar").click(function(){
-      var form = jQuery("#form-associado")[0];
-  	  if (!form.checkValidity()) {
-        jQuery("#msgError").show();
-      }
-  	});
+      jQuery("#confirmar").click(function(){
+        var form = jQuery("#form-associado")[0];
+    	  if (!form.checkValidity()) {
+          jQuery("#msgError").show();
+        }
+    	});
+    });
   </script>
 <?php
+  get_footer();
 }
 ?>
