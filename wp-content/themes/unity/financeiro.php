@@ -1,5 +1,10 @@
 <?php
 
+// Actions List
+
+define("ACT_GEN_ANUIDADE", "gen");
+
+
 // Main flow
 
 function main_financeiro($action) {
@@ -73,7 +78,7 @@ function default_flow_financeiro() {
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="associado?action=<?php echo ACT_SHOW_UPD_FORM; ?>">Atualizar Cadastro</a></li>
+              <li><a href="financeiro?action=<?php echo ACT_GEN_ANUIDADE; ?>">Gerar Anuidades</a></li>
               <!--li role="separator" class="divider"></li-->
             </ul>
           </div>
