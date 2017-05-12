@@ -78,6 +78,7 @@ function pagseguro_notification_financeiro() {
   }
 
   http_response_code($reponseCode);
+  exit;
 }
 
 function default_flow_financeiro() {
