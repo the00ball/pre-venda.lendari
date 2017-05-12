@@ -1,27 +1,83 @@
 <?php
 
-// Actions List
+define('__ROOT__', dirname(__FILE__));
 
-define("ACT_GEN_ANUIDADE", "gen");
-
+require_once(__ROOT__.'/constants.php');
 
 // Main flow
 
 function main_financeiro($action) {
   switch ($action) {
-  /*  case ACT_SHOW_UPD_FORM:
-      update_flow_associado();
-      break;
-    case ACT_INSERT_RECORD:
-      add_associado();
-      break;
-    case ACT_UPDATE_RECORD:
-      update_associado();
-      break;*/
     default:
       default_flow_financeiro();
       break;
   }
+}
+
+function pagseguro_notification_financeiro() {
+
+  $reponseCode = 500;
+
+  global $wpdb;
+
+  // Reading POST params
+
+  $notificationCode = $_POST['notificationCode'];
+  $notificationType = $_POST['$notificationType'];
+
+  if ($notificationType == "transaction") {
+
+    $url = PAGSEGURO_NOTIFICATION."/$notificationCode?email=".PAGSEGURO_EMAIL."&token=".PAGSEGURO_TOKEN;
+
+    $options = array(
+          CURLOPT_URL            => $url,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_SSL_VERIFYPEER => false,
+          CURLOPT_CONNECTTIMEOUT => 20,
+    );
+
+    $curl = curl_init();
+    curl_setopt_array($curl, $options);
+    $output = curl_exec($curl);
+    $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    curl_close($curl);
+
+    if ($httpcode == "200") {
+      $notification = simplexml_load_string($output);
+
+      if ($notification !== false) {
+
+        $updated = $wpdb->update(
+          "sa_pagseguro",
+          array(
+            "notificationCode"   => $notificationCode,
+            "type"               => $notification->type,
+            "status"             => $notification->status,
+            "cancellationSource" => $notification->cancellationsource,
+            "lastEventDate"      => $notification->lasteventdate,
+            "paymentMethod_type" => $notification->paymentMethod->type,
+            "paymentMethod_code" => $notification->paymentMethod->code,
+            "grossAmount"        => $notification->grossAmount,
+            "discountAmount"     => $notification->discountAmount,
+            "feeAmount"          => $notification->creditorFees->intermediationFeeAmount,
+            "netAmount"          => $notification->netAmount,
+            "escrowEndDate"      => $notupification->escrowenddate,
+            "extraAmount"        => $notification->extraamount,
+            "installmentCount"   => $notification->installmentCount,
+            "itemCount"          => $notification->itemCount,
+            "shipping_cost"      => $notification->shipping->cost
+          ),
+          array("reference" => $notification->reference)
+        );
+
+        if ($updated !== false) {
+          $reponseCode = 200;
+        }
+      }
+    }
+  }
+
+  http_response_code($reponseCode);
 }
 
 function default_flow_financeiro() {

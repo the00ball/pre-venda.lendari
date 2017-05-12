@@ -1,0 +1,8 @@
+<?php /* Template Name: PagseguroNotification */
+
+define('__ROOT__', dirname(__FILE__));
+require_once(__ROOT__.'/financeiro.php');
+
+pagseguro_notification_financeiro();
+
+?>
