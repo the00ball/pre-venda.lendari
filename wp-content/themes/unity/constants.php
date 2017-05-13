@@ -9,12 +9,12 @@ define("ACT_INSERT_RECORD", "insert_record");
 
 // Action List - Finance
 
-define("ACT_GEN_ANUIDADE", "gen_anuidade");
+define("ACT_GEN_ANUIDADE", "generate");
 
 // Pagseguro URL
 
 define("PAGSEGURO_ENVIRONMENT", "sandbox");
-define("PAGSEGURO_EMAIL",       "sirineo.lima@gmail.com"); // Atualizar
+define("PAGSEGURO_EMAIL",       "pagseguro@sbau.org.br");
 
 // Production
 
@@ -25,16 +25,16 @@ define("PROD_PAGSEGURO_PAYMENT",      "https://pagseguro.uol.com.br/v2/checkout/
 
 // Sandbox
 
-define("SAND_PAGSEGURO_TOKEN",        "C002771E4F00434AB93B684E35E29B2E"); // Atualizar
+define("SAND_PAGSEGURO_TOKEN",        "7FE7227D90554233B048D6B0435D51CE");
 define("SAND_PAGSEGURO_CHECKOUT",     "https://ws.sandbox.pagseguro.uol.com.br/v2/checkout/");
-define("SAMD_PAGSEGURO_NOTIFICATION", "https://ws.sandbox.pagseguro.uol.com.br/v3/transactions/notifications/");
+define("SAND_PAGSEGURO_NOTIFICATION", "https://ws.sandbox.pagseguro.uol.com.br/v3/transactions/notifications");
 define("SAND_PAGSEGURO_PAYMENT",      "https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code=");
 
 // Current configuration
 
 define("PAGSEGURO_TOKEN",        PAGSEGURO_ENVIRONMENT == 'sandbox' ? SAND_PAGSEGURO_TOKEN        : PROD_PAGSEGURO_TOKEN);
 define("PAGSEGURO_CHECKOUT",     PAGSEGURO_ENVIRONMENT == 'sandbox' ? SAND_PAGSEGURO_CHECKOUT     : PROD_PAGSEGURO_CHECKOUT);
-define("PAGSEGURO_NOTIFICATION", PAGSEGURO_ENVIRONMENT == 'sandbox' ? SAMD_PAGSEGURO_NOTIFICATION : PROD_PAGSEGURO_NOTIFICATION);
+define("PAGSEGURO_NOTIFICATION", PAGSEGURO_ENVIRONMENT == 'sandbox' ? SAND_PAGSEGURO_NOTIFICATION : PROD_PAGSEGURO_NOTIFICATION);
 define("PAGSEGURO_PAYMENT",      PAGSEGURO_ENVIRONMENT == 'sandbox' ? SAND_PAGSEGURO_PAYMENT      : PROD_PAGSEGURO_PAYMENT);
 
 // Pagseguro Status

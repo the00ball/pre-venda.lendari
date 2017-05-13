@@ -3,6 +3,7 @@
 define('__ROOT__', dirname(__FILE__));
 
 require_once(__ROOT__.'/constants.php');
+require_once(__ROOT__.'/utils.php');
 
 // Main flow
 
@@ -215,56 +216,45 @@ function show_finance_list_associado($associate) {
       </div>
     </nav>
 
-  <div class="panel panel-success">
-    <div class="panel-heading">Anuidades</div>
-    <div class="panel-body">
-    <table id="payments" class="table table-striped table-bordered" cellspacing="0" width="100%">
-      <thead>
-        <tr>
-          <th>Status</th>
-          <th>Data</th>
-          <th>Descrição</th>
-          <th>Valor (R$)</th>
-          <th>...</th>
-      </tr>
-      </thead>
-      <tbody>
-      <?php
-        if ($payments !== null) {
-          foreach ($payments as $payment) {
-            echo "<tr>";
-            echo "<th class='col-md-1'><a href='#' data-toggle='tooltip' title='".esc_html( $payment->detalhe )."'>".esc_html( $payment->significado )."</a></th>";
-            echo "<th class='col-md-1'>".esc_html( $payment->date )."</th>";
-            echo "<th>".esc_html( $payment->item_description )."</th>";
-            echo "<th class='col-md-2'><label class='float-right'>".esc_html( $payment->item_amount )."</label></th>";
-            echo "<th class='col-md-1'>";
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h2>Anuidades</h2></div>
+      <div class="panel-body">
+        <table id="payments" class="table table-striped table-bordered" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Data</th>
+              <th>Descrição</th>
+              <th>Valor (R$)</th>
+              <th>...</th>
+          </tr>
+          </thead>
+          <tbody>
+          <?php
+            if ($payments !== null) {
+              foreach ($payments as $payment) {
+                echo "<tr>";
+                echo "<th class='col-md-1'><a href='#' data-toggle='tooltip' title='".esc_html( $payment->detalhe )."'>".esc_html( $payment->significado )."</a></th>";
+                echo "<th class='col-md-1'>".esc_html( $payment->date )."</th>";
+                echo "<th>".esc_html( $payment->item_description )."</th>";
+                echo "<th class='col-md-2'><label class='float-right'>".esc_html( $payment->item_amount )."</label></th>";
+                echo "<th class='col-md-1'>";
 
-            switch ($payment->status) {
-              case ST_PENDENTE:
-              case ST_AGUARDANDO:
-              case ST_EM_ANALISE:
-                echo "<a class='float-right' href='".PAGSEGURO_PAYMENT.$payment->code."'><img src='".get_template_directory_uri()."/images/84x35-pagar.gif'/></a></th>";
-                break;
-              case ST_PAGA:
-              case ST_DISPONIVEL:
-                echo "<img src='".get_template_directory_uri()."/images/pag_status_ok.png'/></th>";
-                break;
-              case ST_EM_DISPUTA:
-              case ST_DEVOLVIDA:
-                echo "<img src='".get_template_directory_uri()."/images/pag_status_devolvida.png'/></th>";
-              case ST_CANCELADA:
-                echo "<img src='".get_template_directory_uri()."/images/pag_status_cancel.png'/></th>";
-                break;
-              default:
-                break;
+                $imageStatus = get_image_status_associado($payment->status);
+                if ($payment->status == ST_PENDENTE || $payment->status == ST_AGUARDANDO) {
+                    echo "<a href='".PAGSEGURO_PAYMENT.$payment->code."'><img src='$imageStatus'/></a></th>";
+                } else {
+                    echo "<img src='$imageStatus'/></th>";
+                }
+                echo "</tr>";
+              }
             }
-            echo "</tr>";
-          }
-        }
-      ?>
-      </tbody>
-    </table>
-  </div></div></div>
+          ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 <?php
   get_footer();
 }
@@ -329,6 +319,7 @@ function add_associado() {
       "estudante"            => ( $estudante == "on" ) ? "1" : "0",
       "doc_estudante"        => $doc_estudante,
       "sn_atualizado_antigo" => "N",
+      "status"               => 1,
       "tipo_usuario"         => 1,
       "data_cadastro"        => $data_cadastro,
       "foto_url"             => get_avatar_url(get_current_user_id()),
@@ -420,6 +411,7 @@ function update_associado() {
       "estudante"            => ( $estudante == "on" ) ? "1" : "0",
       "doc_estudante"        => $doc_estudante,
       "sn_atualizado_antigo" => ( $sn_atualizado_antigo == "" ) ? "S" : $sn_atualizado_antigo,
+      "status"               => 1,
       "foto_url"             => get_avatar_url(get_current_user_id()),
       "ID"                   => get_current_user_id()
     ),
@@ -483,13 +475,13 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
   get_header();
 ?>
   <div id="content">
-    <div class="panel panel-success">
+    <div class="panel panel-primary">
       <div class="panel-heading">
         <?php
           if ($action === ACT_INSERT_RECORD) {
-            echo "Cadastro de Associado";
+            echo "<h2>Cadastro de Associado</h2>";
           } else {
-            echo "Atualização de Dados do Associado";
+            echo "<h2>Atualização de Dados do Associado</h2>";
           }
         ?>
       </div>
@@ -532,7 +524,7 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-3 control-label" for="nome">Nome</label>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo esc_html($associate->nome); ?>" />
           </div>
         </div>
@@ -540,7 +532,7 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-3 control-label" for="profissao">Profissão</label>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <input id="profissao" name="profissao" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo esc_html($associate->profissao); ?>" />
           </div>
         </div>
@@ -548,7 +540,7 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <!-- Select Basic -->
         <div class="form-group">
           <label class="col-md-3 control-label" for="sexo">Sexo</label>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <select id="sexo" name="sexo" class="form-control">
               <option value="1" <?php if ($associate->sexo == "1") echo "selected"; ?>>Masculino</option>
               <option value="0" <?php if ($associate->sexo == "0") echo "selected"; ?>>Feminino</option>
@@ -559,7 +551,7 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-3 control-label" for="nascimento">Data de Nascimento</label>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input id="nascimento" name="nascimento" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo esc_html($associate->nascimento);?>" />
           </div>
         </div>
@@ -567,12 +559,12 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <div class="form-group">
           <!-- Text input-->
           <label class="col-md-3 control-label" for="res">Tel. Residencial</label>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input id="res" name="res" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo esc_html($associate->foneRes); ?>" />
           </div>
           <!-- Text input-->
           <label class="col-md-1 control-label" for="cel">Celular</label>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input id="cel" name="cel" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo esc_html($associate->foneCel); ?>" />
           </div>
         </div>
@@ -580,7 +572,7 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-3 control-label" for="cep">CEP</label>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input id="cep" name="cep" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo esc_html($associate->cep); ?>" />
           </div>
         </div>
@@ -588,7 +580,7 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-3 control-label" for="logradouro">Logradouro</label>
-          <div class="col-md-7">
+          <div class="col-md-5">
             <input id="logradouro" name="logradouro" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo esc_html($associate->logradouro); ?>" />
           </div>
         </div>
@@ -620,7 +612,7 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <!-- Select Basic -->
         <div class="form-group">
           <label class="col-md-3 control-label" for="uf">UF</label>
-          <div class="col-md-2">
+          <div class="col-md-1">
             <select id="uf" name="uf" class="form-control">
               <option value="AC" <?php if ($associate->uf == "AC") echo "selected"; ?>>AC</option>
               <option value="AL" <?php if ($associate->uf == "AL") echo "selected"; ?>>AL</option>
@@ -685,12 +677,13 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <div class="form-group">
           <label class="col-md-4 control-label" for="confirmar"></label>
           <div class="col-md-4">
-            <button id="confirmar" name="confirmar" class="btn btn-default">
+            <button id="confirmar" name="confirmar" class="btn btn-primary">
             	<?php
-                if ($associate !== null)
-            	    echo "Atualizar Cadastro";
-                else
-                  echo "Confirmar Cadastro";
+                if ($action === ACT_INSERT_RECOR) {
+            	    echo "Confirmar Cadastro";
+                } else {
+                  echo "Atualizar Cadastro";
+                }
             	?>
             </button>
           </div>
