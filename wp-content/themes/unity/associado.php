@@ -18,6 +18,9 @@ function main_associado($action) {
     case ACT_UPDATE_RECORD:
       update_associado();
       break;
+    case ACT_GERA_GUIA_PAG:
+      gera_guia_pagamento_associado();
+      break;
     default:
       default_flow_associado();
       break;
@@ -60,6 +63,43 @@ function default_flow_associado() {
     } else {
       show_form_associado(ACT_UPDATE_RECORD, $associate);
     }
+  }
+}
+
+// Gera guia de pagamento
+
+function gera_guia_pagamento_associado() {
+  global $wpdb;
+
+  $current_user = wp_get_current_user();
+  $associate = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM sa_usuarios WHERE ID = %d", $current_user->ID ) );
+
+  if ($associate !== null) {
+    // Check if there is pending checkouts
+    $sql  = "SELECT p.date ";
+    $sql .= "FROM sa_pagseguro p ";
+    $sql .= "WHERE p.idCliente = $associate->id_usuarios ";
+    $sql .= "AND (p.status = ".ST_PENDENTE." OR p.status = ".ST_AGUARDANDO.")";
+    $sql .= "AND str_to_date(p.date, '%Y-%m-%d') <> '0000-00-00' ";
+    $sql .= "ORDER BY str_to_date(p.date, '%Y-%m-%d') DESC ";
+    $sql .= "LIMIT 1 ";
+
+    $date = $wpdb->get_var($sql);
+
+    if ($date === null) {
+      $checkout = pagseguro_checkout_associado($associate);
+      if ($checkout === false) {
+        wp_redirect("associado");
+      } else {
+        wp_redirect(PAGSEGURO_PAYMENT.$checkout->code);
+      }
+    } else {
+      wp_redirect("associado");
+    }
+    exit;
+  } else {
+    wp_redirect("associado");
+    exit;
   }
 }
 
@@ -209,8 +249,9 @@ function show_finance_list_associado($associate) {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opções <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="associado?action=<?php echo ACT_SHOW_UPD_FORM; ?>">Atualizar Cadastro</a></li>
+	        <li><a href="associado?action=<?php echo ACT_GERA_GUIA_PAG; ?>">Gerar Guia de Pagamento</a></li>
               </ul>
-            </li>
+	    </li>
           </ul>
         </div>
       </div>
