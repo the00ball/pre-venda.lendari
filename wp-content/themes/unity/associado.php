@@ -249,9 +249,9 @@ function show_finance_list_associado($associate) {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opções <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="associado?action=<?php echo ACT_SHOW_UPD_FORM; ?>">Atualizar Cadastro</a></li>
-	        <li><a href="associado?action=<?php echo ACT_GERA_GUIA_PAG; ?>">Gerar Guia de Pagamento</a></li>
+            <li><a href="associado?action=<?php echo ACT_GERA_GUIA_PAG; ?>">Gerar Guia de Pagamento</a></li>
               </ul>
-	    </li>
+        </li>
           </ul>
         </div>
       </div>
@@ -305,7 +305,7 @@ function show_finance_list_associado($associate) {
 function add_associado() {
   global $wpdb;
 
-  $maskChars = array("(", ")", "-", " ");
+  $maskChars = array("(", ")", "-", " ", ".", "/");
 
   // Get current user
 
@@ -322,71 +322,77 @@ function add_associado() {
 
   // Form fields
 
-  $nome          = sanitize_text_field($_POST["nome"]);
-  $profissao     = sanitize_text_field($_POST["profissao"]);
-  $sexo          = $_POST["sexo"];
-  $nascimento    = $_POST["nascimento"];
-  $res           = str_replace($maskChars, "", sanitize_text_field($_POST["res"]));
-  $cel           = str_replace($maskChars, "", sanitize_text_field($_POST["cel"]));
-  $cep           = str_replace($maskChars, "", sanitize_text_field($_POST["cep"]));
-  $logradouro    = sanitize_text_field($_POST["logradouro"]);
-  $numero        = sanitize_text_field($_POST["numero"]);
-  $bairro        = sanitize_text_field($_POST["bairro"]);
-  $cidade        = sanitize_text_field($_POST["cidade"]);
-  $uf            = $_POST["uf"];
-  $pais          = sanitize_text_field($_POST["pais"]);
-  $estudante     = $_POST["estudante"];
-  $doc_estudante = sanitize_text_field($_POST["doc_estudante"]);
-  $data_cadastro = date('Y-m-d H:i:s');
+  $sn_pessoa_fisica = sanitize_text_field($_POST["sn_pessoa_fisica"]);
+  $cpf_cnpj         = str_replace($maskChars, "", sanitize_text_field($_POST["cpf_cnpj"]));
+  $nome             = sanitize_text_field($_POST["nome"]);
+  $profissao        = sanitize_text_field($_POST["profissao"]);
+  $sexo             = $_POST["sexo"];
+  $nascimento       = $_POST["nascimento"];
+  $res              = str_replace($maskChars, "", sanitize_text_field($_POST["res"]));
+  $cel              = str_replace($maskChars, "", sanitize_text_field($_POST["cel"]));
+  $cep              = str_replace($maskChars, "", sanitize_text_field($_POST["cep"]));
+  $logradouro       = sanitize_text_field($_POST["logradouro"]);
+  $numero           = sanitize_text_field($_POST["numero"]);
+  $bairro           = sanitize_text_field($_POST["bairro"]);
+  $cidade           = sanitize_text_field($_POST["cidade"]);
+  $uf               = $_POST["uf"];
+  $pais             = sanitize_text_field($_POST["pais"]);
+  $estudante        = $_POST["estudante"];
+  $doc_estudante    = sanitize_text_field($_POST["doc_estudante"]);
+  $data_cadastro    = date('Y-m-d H:i:s');
 
   $inserted = $wpdb->insert(
     "sa_usuarios",
     array(
-      "id_usuarios"          => ++$id_usuarios,
-      "nome"                 => $nome,
-      "email"                => $current_user->user_email,
-      "profissao"            => $profissao,
-      "sexo"                 => $sexo,
-      "nascimento"           => $nascimento,
-      "foneRes"              => $res,
-      "foneCel"              => $cel,
-      "cep"                  => $cep,
-      "logradouro"           => $logradouro,
-      "numero"               => $numero,
-      "bairro"               => $bairro,
-      "cidade"               => $cidade,
-      "uf"                   => $uf,
-      "pais"                 => $pais,
-      "estudante"            => ( $estudante == "on" ) ? "1" : "0",
-      "doc_estudante"        => $doc_estudante,
-      "sn_atualizado_antigo" => "N",
-      "status"               => 1,
-      "tipo_usuario"         => 1,
-      "data_cadastro"        => $data_cadastro,
-      "foto_url"             => get_avatar_url(get_current_user_id()),
-      "ID"                   => get_current_user_id()
+        "id_usuarios"          => ++$id_usuarios,
+        "sn_pessoa_fisica"     => $sn_pessoa_fisica,
+        "cpf_cnpj"             => $cpf_cnpj,
+        "nome"                 => $nome,
+        "email"                => $current_user->user_email,
+        "profissao"            => $profissao,
+        "sexo"                 => $sexo,
+        "nascimento"           => $nascimento,
+        "foneRes"              => $res,
+        "foneCel"              => $cel,
+        "cep"                  => $cep,
+        "logradouro"           => $logradouro,
+        "numero"               => $numero,
+        "bairro"               => $bairro,
+        "cidade"               => $cidade,
+        "uf"                   => $uf,
+        "pais"                 => $pais,
+        "estudante"            => ( $estudante == "on" ) ? "1" : "0",
+        "doc_estudante"        => $doc_estudante,
+        "sn_atualizado_antigo" => "N",
+        "status"               => 1,
+        "tipo_usuario"         => 1,
+        "data_cadastro"        => $data_cadastro,
+        "foto_url"             => get_avatar_url(get_current_user_id()),
+        "ID"                   => get_current_user_id()
     )
   );
 
   $associate = new StdClass();
 
-  $associate->id_usuarios   = $id_usuarios;
-  $associate->nome          = $nome;
-  $associate->profissao     = $profissao;
-  $associate->sexo          = $sexo;
-  $associate->nascimento    = $nascimento;
-  $associate->foneRes       = $res;
-  $associate->foneCel       = $cel;
-  $associate->cep           = $cep;
-  $associate->logradouro    = $logradouro;
-  $associate->numero        = $numero;
-  $associate->bairro        = $bairro;
-  $associate->cidade        = $cidade;
-  $associate->uf            = $uf;
-  $associate->pais          = $pais;
-  $associate->complemento   = "";
-  $associate->estudante     = $estudante == "on" ? "1" : "0";
-  $associate->doc_estudante = $doc_estudante;
+  $associate->id_usuarios       = $id_usuarios;
+  $associate->sn_pessoa_fisica  = $sn_pessoa_fisica;
+  $associate->cpf_cnpj          = $cpf_cnpj;
+  $associate->nome              = $nome;
+  $associate->profissao         = $profissao;
+  $associate->sexo              = $sexo;
+  $associate->nascimento        = $nascimento;
+  $associate->foneRes           = $res;
+  $associate->foneCel           = $cel;
+  $associate->cep               = $cep;
+  $associate->logradouro        = $logradouro;
+  $associate->numero            = $numero;
+  $associate->bairro            = $bairro;
+  $associate->cidade            = $cidade;
+  $associate->uf                = $uf;
+  $associate->pais              = $pais;
+  $associate->complemento       = "";
+  $associate->estudante         = ( $estudante == "on" ) ? "1" : "0";
+  $associate->doc_estudante     = $doc_estudante;
 
   if ($inserted === false) {
     show_form_associado($action, $associate, true);
@@ -406,7 +412,7 @@ function add_associado() {
 function update_associado() {
   global $wpdb;
 
-  $maskChars = array("(", ")", "-", " ");
+  $maskChars = array("(", ")", "-", " ", ".", "/");
 
   // Hidden fields
 
@@ -417,44 +423,48 @@ function update_associado() {
 
   // Form fields
 
-  $nome          = sanitize_text_field($_POST["nome"]);
-  $profissao     = sanitize_text_field($_POST["profissao"]);
-  $sexo          = $_POST["sexo"];
-  $nascimento    = $_POST["nascimento"];
-  $res           = str_replace($maskChars, "", sanitize_text_field($_POST["res"]));
-  $cel           = str_replace($maskChars, "", sanitize_text_field($_POST["cel"]));
-  $cep           = str_replace($maskChars, "", sanitize_text_field($_POST["cep"]));
-  $logradouro    = sanitize_text_field($_POST["logradouro"]);
-  $numero        = sanitize_text_field($_POST["numero"]);
-  $bairro        = sanitize_text_field($_POST["bairro"]);
-  $cidade        = sanitize_text_field($_POST["cidade"]);
-  $uf            = $_POST["uf"];
-  $pais          = sanitize_text_field($_POST["pais"]);
-  $estudante     = $_POST["estudante"];
-  $doc_estudante = sanitize_text_field($_POST["doc_estudante"]);
+  $sn_pessoa_fisica = sanitize_text_field($_POST["sn_pessoa_fisica"]);
+  $cpf_cnpj         = str_replace($maskChars, "", sanitize_text_field($_POST["cpf_cnpj"]));
+  $nome             = sanitize_text_field($_POST["nome"]);
+  $profissao        = sanitize_text_field($_POST["profissao"]);
+  $sexo             = $_POST["sexo"];
+  $nascimento       = $_POST["nascimento"];
+  $res              = str_replace($maskChars, "", sanitize_text_field($_POST["res"]));
+  $cel              = str_replace($maskChars, "", sanitize_text_field($_POST["cel"]));
+  $cep              = str_replace($maskChars, "", sanitize_text_field($_POST["cep"]));
+  $logradouro       = sanitize_text_field($_POST["logradouro"]);
+  $numero           = sanitize_text_field($_POST["numero"]);
+  $bairro           = sanitize_text_field($_POST["bairro"]);
+  $cidade           = sanitize_text_field($_POST["cidade"]);
+  $uf               = $_POST["uf"];
+  $pais             = sanitize_text_field($_POST["pais"]);
+  $estudante        = $_POST["estudante"];
+  $doc_estudante    = sanitize_text_field($_POST["doc_estudante"]);
 
   $updated = $wpdb->update(
     "sa_usuarios",
     array(
-      "nome"                 => $nome,
-      "profissao"            => $profissao,
-      "sexo"                 => $sexo,
-      "nascimento"           => $nascimento,
-      "foneRes"              => $res,
-      "foneCel"              => $cel,
-      "cep"                  => $cep,
-      "logradouro"           => $logradouro,
-      "numero"               => $numero,
-      "bairro"               => $bairro,
-      "cidade"               => $cidade,
-      "uf"                   => $uf,
-      "pais"                 => $pais,
-      "estudante"            => ( $estudante == "on" ) ? "1" : "0",
-      "doc_estudante"        => $doc_estudante,
-      "sn_atualizado_antigo" => ( $sn_atualizado_antigo == "" ) ? "S" : $sn_atualizado_antigo,
-      "status"               => 1,
-      "foto_url"             => get_avatar_url(get_current_user_id()),
-      "ID"                   => get_current_user_id()
+        "sn_pessoa_fisica"     => $sn_pessoa_fisica,
+        "cpf_cnpj"             => $cpf_cnpj,
+        "nome"                 => $nome,
+        "profissao"            => $profissao,
+        "sexo"                 => $sexo,
+        "nascimento"           => $nascimento,
+        "foneRes"              => $res,
+        "foneCel"              => $cel,
+        "cep"                  => $cep,
+        "logradouro"           => $logradouro,
+        "numero"               => $numero,
+        "bairro"               => $bairro,
+        "cidade"               => $cidade,
+        "uf"                   => $uf,
+        "pais"                 => $pais,
+        "estudante"            => ( $estudante == "on" ) ? "1" : "0",
+        "doc_estudante"        => $doc_estudante,
+        "sn_atualizado_antigo" => ( $sn_atualizado_antigo == "" ) ? "S" : $sn_atualizado_antigo,
+        "status"               => 1,
+        "foto_url"             => get_avatar_url(get_current_user_id()),
+        "ID"                   => get_current_user_id()
     ),
     array("id_usuarios" => $id_usuarios)
   );
@@ -463,6 +473,8 @@ function update_associado() {
 
   $associate->id_usuarios          = $id_usuarios;
   $associate->email                = $email;
+  $associate->sn_pessoa_fisica     = $sn_pessoa_fisica;
+  $associate->cpf_cnpj             = $cpf_cnpj;
   $associate->nome                 = $nome;
   $associate->profissao            = $profissao;
   $associate->sexo                 = $sexo;
@@ -556,10 +568,30 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <?php
         }
         ?>
+
         <!-- Required fiels alert -->
         <div id="msgError" class="alert alert-danger fade in" style="display:none;">
           <a href="#" class="close" onclick="jQuery('#msgError').hide()">&times;</a>
           <strong>Erro!</strong> Todos os campos obrigatórios devem ser preenchidos.
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="sn_pessoa_fisica">Tipo de Pessoa</label>
+          <div class="col-md-1">
+            <select id="sn_pessoa_fisica" name="sn_pessoa_fisica" class="form-control">
+              <option value="S" <?php if ($associate->sn_pessoa_fisica == "S") echo "selected"; ?>>Física</option>
+              <option value="N" <?php if ($associate->sn_pessoa_fisica == "N") echo "selected"; ?>>Jurídica</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+        <label class="col-md-3 control-label" for="cpf_cnpj"><?php echo ( $associate->sn_pessoa_fisica == "S" ) ? "CPF" : "CNPJ"; ?></label>
+          <div class="col-md-2">
+            <input id="cpf_cnpj" name="cpf_cnpj" type="cpf_cnpj" placeholder="" class="form-control input-md" required="" value="<?php echo esc_html($associate->cpf_cnpj); ?>" />
+          </div>
         </div>
 
         <!-- Text input-->
@@ -719,18 +751,18 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
           <label class="col-md-4 control-label" for="confirmar"></label>
           <div class="col-md-4">
             <button id="confirmar" name="confirmar" class="btn btn-primary">
-            	<?php
+                <?php
                 if ($action === ACT_INSERT_RECOR) {
-            	    echo "Confirmar Cadastro";
+                    echo "Confirmar Cadastro";
                 } else {
                   echo "Atualizar Cadastro";
                 }
-            	?>
+                ?>
             </button>
           </div>
         </div>
 
-        <!-- Checkboxe -->
+        <!-- Checkbox -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="conf_estatuto"></label>
           <div class="col-md-4">
@@ -747,24 +779,43 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
       </div>
     </div>
   </div>
-
   <script>
-    jQuery(document).ready(function() {
-      // Format fields
 
-      jQuery("#nascimento").datepicker({ dateFormat: 'dd/mm/yy' });
-      jQuery("#res").mask("(99) 9999-9999");
-      jQuery("#cel").mask("(99) 9999-9999");
-      jQuery("#cep").mask("99999-999");
-
-      // Form button click
-
-      jQuery("#confirmar").click(function(){
-        var form = jQuery("#form-associado")[0];
-    	  if (!form.checkValidity()) {
-          jQuery("#msgError").show();
+    function onChangeTipoPessoa(e) {
+        var sn_pessoa_fisica = jQuery("#sn_pessoa_fisica").val();
+        if (sn_pessoa_fisica === "S") {
+            jQuery("label[for = cpf_cnpj]").text("CPF");
+            jQuery("#cpf_cnpj").mask("999.999.999-99");
+        } else {
+            jQuery("label[for = cpf_cnpj]").text("CNPJ");
+            jQuery("#cpf_cnpj").mask("99.999.999/9999-99");
         }
-    	});
+        jQuery("#cpf_cnpj").focus();
+    }
+
+    jQuery(document).ready(function() {
+        onChangeTipoPessoa();
+        jQuery("#nascimento").datepicker({ dateFormat: 'dd/mm/yy' });
+        jQuery("#res").mask("(99) 9999-9999");
+        jQuery("#cel").mask("(99) 99999-9999");
+        jQuery("#cep").mask("99999-999");
+        jQuery("#cpf_cnpj").focusout(function() {
+            var sn_pessoa_fisica = jQuery("#sn_pessoa_fisica").val();
+            var cpf_cnpj = jQuery("#cpf_cnpj").val();
+            cpf_cnpj = cpf_cnpj.replace(/[-./\s]/g, '');
+            if (sn_pessoa_fisica === "S") {
+                // TODO: Validar CPF
+            } else {
+                // TODO: Validar CNPJ
+            }
+        });
+        jQuery("#sn_pessoa_fisica").change(onChangeTipoPessoa);
+        jQuery("#confirmar").click(function(){
+            var form = jQuery("#form-associado")[0];
+            if (!form.checkValidity()) {
+                jQuery("#msgError").show();
+            }
+        });
     });
   </script>
 <?php

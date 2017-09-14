@@ -10,7 +10,9 @@ define("ACT_GERA_GUIA_PAG", "gera_guia");
 
 // Action List - Finance
 
-define("ACT_GEN_ANUIDADE", "generate");
+define("ACT_GEN_ARQUIVO", "gen_arquivo");
+define("ACT_CANCELAR",    "cancel_record");
+define("ACT_BAIXAR",      "baixar_record");
 
 // Pagseguro URL
 

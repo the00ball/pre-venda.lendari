@@ -23,7 +23,7 @@ function get_image_status_associado($status) {
   switch ($status) {
     case ST_PENDENTE:
     case ST_AGUARDANDO:
-      $image .= "/images/84x35-pagar.gif";
+      $image .= "/images/pag_status_aguardando.png";
       break;
     case ST_EM_ANALISE:
       $image .= "/images/pag_status_em_analise.png";
@@ -44,6 +44,11 @@ function get_image_status_associado($status) {
       break;
   }
   return $image;
+}
+
+function fmt_img_path($img_file_name) {
+  $home = get_template_directory_uri();
+  return "$home/images/$img_file_name";
 }
 
 ?>
