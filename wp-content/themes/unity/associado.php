@@ -578,7 +578,7 @@ function show_form_associado($action, $associate = null, $show_info_error = fals
         <!-- Select Basic -->
         <div class="form-group">
           <label class="col-md-3 control-label" for="sn_pessoa_fisica">Tipo de Pessoa</label>
-          <div class="col-md-1">
+          <div class="col-md-2">
             <select id="sn_pessoa_fisica" name="sn_pessoa_fisica" class="form-control">
               <option value="S" <?php if ($associate->sn_pessoa_fisica == "S") echo "selected"; ?>>Física</option>
               <option value="N" <?php if ($associate->sn_pessoa_fisica == "N") echo "selected"; ?>>Jurídica</option>

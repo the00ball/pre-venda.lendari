@@ -395,7 +395,7 @@ function default_flow_financeiro() {
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opções <span class="caret"></span></a>
                 <ul style="width:220px" class="dropdown-menu">
-                <li><a target="_blank" href="financeiro?action=<?php echo ACT_GEN_ARQUIVO; ?>"><img src='<?php echo fmt_img_path("icon_file_excel"); ?>'/>&nbsp;Lista de Associados</a></li>
+                <li><a target="_blank" href="financeiro?action=<?php echo ACT_GEN_ARQUIVO; ?>"><img src='<?php echo fmt_img_path("icon_file_excel.png"); ?>'/>&nbsp;Lista de Associados</a></li>
                 </ul>
               </li>
             </ul>
