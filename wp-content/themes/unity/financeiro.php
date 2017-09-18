@@ -144,7 +144,11 @@ function generate_csv_plan_financeiro() {
         $csv = "$sql\n";
         foreach($associates as $associate) {
             foreach($existing_columns as $column) {
-                $csv .= '"'.$associate[$column].'",';
+                $value = esc_html($associate[$column]);
+                if ($column == "sexo") {
+                    $value = ( $value == "1" ) ? "M" : "F";
+                }
+                $csv .= '"'.$value.'",';
             }
             $csv .= "\n";
         }
