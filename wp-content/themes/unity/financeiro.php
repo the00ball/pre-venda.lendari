@@ -133,6 +133,7 @@ function baixa_manual_financeiro() {
 function generate_csv_plan_financeiro() {
     global $wpdb;
 
+    $maskChars = array(",", ";");
     $table = "sa_usuarios";
 
     $existing_columns = $wpdb->get_col("DESC {$table}", 0);
@@ -141,22 +142,41 @@ function generate_csv_plan_financeiro() {
     $associates = $wpdb->get_results( "SELECT $sql FROM {$table}", ARRAY_A );
 
     if ($associates !== null) {
-        $csv = "$sql\n";
+        $csv = "$sql,ultimo_pagto\n";
         foreach($associates as $associate) {
             foreach($existing_columns as $column) {
-                $value = esc_html($associate[$column]);
+                //if ($column == "senha") {
+                //    continue;
+                //}
+
+                $value = str_replace($maskChars, "", esc_html($associate[$column]));
                 if ($column == "sexo") {
                     $value = ( $value == "1" ) ? "M" : "F";
                 }
-                $csv .= '"'.$value.'",';
+                $csv .= "$value,";
             }
-            $csv .= "\n";
+
+            // Check last payment
+
+            $idUsuarios = $associate["id_usuarios"];
+
+            $sql  = "SELECT DATE_FORMAT(STR_TO_DATE(p.date, '%Y-%m-%d'), '%d/%m/%Y') as date ";
+            $sql .= "FROM sa_pagseguro p ";
+            $sql .= "WHERE p.idCliente = $idUsuarios ";
+            $sql .= "AND (p.status = 3 OR p.status = 4) "; // Paga ou Disponível
+            $sql .= "AND str_to_date(p.date, '%Y-%m-%d') <> '0000-00-00' ";
+            $sql .= "ORDER BY str_to_date(p.date, '%Y-%m-%d') DESC ";
+            $sql .= "LIMIT 1 ";
+
+            $date = $wpdb->get_var($sql);
+
+            $csv .= "$date\n";
         }
     }
     $date = date('d_m_Y');
 
     header("Content-type: text/csv");
-    header("Content-Disposition: attachment; filename=sbau_lista_associados_$date.xls");
+    header("Content-Disposition: attachment; filename=sbau_lista_associados_$date.csv");
     header("Pragma: no-cache");
     header("Expires: 0");
 
